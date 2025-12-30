@@ -1,0 +1,138 @@
+/* ==============================================
+   CSS VARIABLES & DESIGN TOKENS
+   ============================================== */
+:root {
+    /* Colors */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #fafafa;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #6b6b6b;
+    --color-text-tertiary: #9b9b9b;
+    --color-accent: #6c5ce7;
+    --color-accent-light: #a29bfe;
+    --color-border: #e5e5e5;
+    --color-success: #00b894;
+    --color-error: #d63031;
+    --color-bisaya: #00cec9;
+    --color-tagalog: #e84393;
+    --color-shared: #fdcb6e;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 9999px;
+
+    /* Typography */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Monaco', 'Menlo', monospace;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==============================================
+   RESET & BASE STYLES
+   ============================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==============================================
+   UTILITY CLASSES
+   ============================================== */
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Spin Animation */
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
+}

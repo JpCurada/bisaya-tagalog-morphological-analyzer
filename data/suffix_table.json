@@ -1,0 +1,80 @@
+{
+    "-an": {
+        "language": "Both",
+        "function": "locative_focus",
+        "compatible_pos": [
+            "verb",
+            "noun"
+        ]
+    },
+    "-han": {
+        "language": "Tagalog",
+        "function": "locative_focus",
+        "compatible_pos": [
+            "verb",
+            "noun"
+        ]
+    },
+    "-in": {
+        "language": "Tagalog",
+        "function": "object_focus",
+        "compatible_pos": [
+            "verb"
+        ]
+    },
+    "-on": {
+        "language": "Bisaya",
+        "function": "object_focus",
+        "compatible_pos": [
+            "verb",
+            "noun"
+        ]
+    },
+    "-ay": {
+        "language": "Bisaya",
+        "function": "reciprocal_diminutive",
+        "compatible_pos": [
+            "verb",
+            "noun"
+        ]
+    },
+    "-ang": {
+        "language": "Both",
+        "function": "relativizer",
+        "compatible_pos": [
+            "verb",
+            "adjective"
+        ]
+    },
+    "-ng": {
+        "language": "Both",
+        "function": "linker",
+        "compatible_pos": [
+            "verb",
+            "adjective",
+            "noun"
+        ]
+    },
+    "-a": {
+        "language": "Bisaya",
+        "function": "imperative",
+        "compatible_pos": [
+            "verb"
+        ]
+    },
+    "-i": {
+        "language": "Bisaya",
+        "function": "imperative",
+        "compatible_pos": [
+            "verb"
+        ]
+    },
+    "-g": {
+        "language": "Bisaya",
+        "function": "linker",
+        "compatible_pos": [
+            "noun",
+            "adjective"
+        ]
+    }
+}

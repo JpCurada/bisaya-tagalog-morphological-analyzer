@@ -1,0 +1,202 @@
+{
+    "luto": {
+        "meaning": "cook",
+        "pos": "verb",
+        "origin": "Tagalog/Bisaya"
+    },
+    "tubig": {
+        "meaning": "water",
+        "pos": "noun",
+        "origin": "Austronesian"
+    },
+    "libro": {
+        "meaning": "book",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "eskwela": {
+        "meaning": "school",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "ako": {
+        "meaning": "I",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "ikaw": {
+        "meaning": "You",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "siya": {
+        "meaning": "He/She",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "kami": {
+        "meaning": "We (exclusive)",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "dyos": {
+        "meaning": "God",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "oras": {
+        "meaning": "time",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "trabaho": {
+        "meaning": "work",
+        "pos": "verb",
+        "origin": "Spanish loan"
+    },
+    "ka": {
+        "meaning": "you (singular)",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "mo": {
+        "meaning": "your/by you",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "ko": {
+        "meaning": "my/by me",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "nimo": {
+        "meaning": "your (Bisaya)",
+        "pos": "pronoun",
+        "origin": "Bisaya"
+    },
+    "niya": {
+        "meaning": "his/her",
+        "pos": "pronoun",
+        "origin": "Austronesian"
+    },
+    "lang": {
+        "meaning": "only/just",
+        "pos": "adverb",
+        "origin": "Austronesian"
+    },
+    "na": {
+        "meaning": "already",
+        "pos": "adverb",
+        "origin": "Austronesian"
+    },
+    "pa": {
+        "meaning": "still/more",
+        "pos": "adverb",
+        "origin": "Austronesian"
+    },
+    "oo": {
+        "meaning": "yes",
+        "pos": "adverb",
+        "origin": "Austronesian"
+    },
+    "dili": {
+        "meaning": "no (Bisaya)",
+        "pos": "adverb",
+        "origin": "Bisaya"
+    },
+    "hindi": {
+        "meaning": "no (Tagalog)",
+        "pos": "adverb",
+        "origin": "Tagalog"
+    },
+    "pero": {
+        "meaning": "but",
+        "pos": "conjunction",
+        "origin": "Spanish loan"
+    },
+    "o": {
+        "meaning": "or",
+        "pos": "conjunction",
+        "origin": "Spanish loan"
+    },
+    "ni": {
+        "meaning": "of/by",
+        "pos": "marker",
+        "origin": "Austronesian"
+    },
+    "kay": {
+        "meaning": "because/to",
+        "pos": "conjunction",
+        "origin": "Austronesian"
+    },
+    "ug": {
+        "meaning": "and (Bisaya)",
+        "pos": "conjunction",
+        "origin": "Bisaya"
+    },
+    "at": {
+        "meaning": "and (Tagalog)",
+        "pos": "conjunction",
+        "origin": "Tagalog"
+    },
+    "lamesa": {
+        "meaning": "table",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "silya": {
+        "meaning": "chair",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "kutsara": {
+        "meaning": "spoon",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "tinidor": {
+        "meaning": "fork",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "plato": {
+        "meaning": "plate",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "baso": {
+        "meaning": "glass",
+        "pos": "noun",
+        "origin": "Spanish loan"
+    },
+    "gwapo": {
+        "meaning": "handsome",
+        "pos": "adjective",
+        "origin": "Spanish loan"
+    },
+    "gwapa": {
+        "meaning": "beautiful",
+        "pos": "adjective",
+        "origin": "Spanish loan"
+    },
+    "gusto": {
+        "meaning": "like/want",
+        "pos": "verb",
+        "origin": "Spanish loan"
+    },
+    "pwede": {
+        "meaning": "can/allowed",
+        "pos": "verb",
+        "origin": "Spanish loan"
+    },
+    "siguro": {
+        "meaning": "maybe",
+        "pos": "adverb",
+        "origin": "Spanish loan"
+    },
+    "syempre": {
+        "meaning": "of course",
+        "pos": "adverb",
+        "origin": "Spanish loan"
+    }
+}

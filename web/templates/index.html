@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bistag - Bisaya-Tagalog Code-Switching Morphological Analyzer using DFA">
+
+    <!-- Performance Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <title>Bistag - Morphological Analyzer</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-content">
+            <a href="/" class="logo" aria-label="Bistag Home">
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" aria-hidden="true">
+                    <path d="M4 7h16M4 12h16M4 17h10" />
+                </svg>
+                <span class="logo-text">Bistag</span>
+            </a>
+            <a href="/" class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 8H2M6 4L2 8l4 4" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Header -->
+        <header>
+            <h1>Morphological Analyzer</h1>
+            <p>Bisaya-Tagalog Code-Switching Detection</p>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section glass-panel">
+            <label for="inputText" class="sr-only">Enter text to analyze</label>
+            <textarea id="inputText" placeholder="Enter mixed Bisaya-Tagalog text here... (e.g., 'Nag-kaon ka na lab')"
+                aria-label="Text input for morphological analysis" spellcheck="false"></textarea>
+            <div class="actions">
+                <button id="clearBtn" onclick="clearText()" class="btn btn-secondary" aria-label="Clear input">
+                    Clear
+                </button>
+                <button id="analyzeBtn" onclick="analyzeText()" class="btn btn-accent btn-lg" aria-label="Analyze text">
+                    Analyze Text
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loading" class="hidden" role="status" aria-live="polite">
+            <div class="spinner spin" aria-hidden="true"></div>
+            <p>Analyzing morphology...</p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden" role="region" aria-label="Analysis results">
+            <!-- Statistics -->
+            <div class="stats-row">
+                <div class="stat-card glass-panel">
+                    <span class="label">Total Words</span>
+                    <span class="value" id="statTotal" aria-live="polite">0</span>
+                </div>
+                <div class="stat-card glass-panel">
+                    <span class="label">Switches Found</span>
+                    <span class="value" id="statSwitches" aria-live="polite">0</span>
+                </div>
+                <div class="stat-card glass-panel">
+                    <span class="label">Valid Parse</span>
+                    <span class="value" id="statValid" aria-live="polite">0%</span>
+                </div>
+            </div>
+
+            <!-- Language Flow Visualization -->
+            <div class="visualization glass-panel">
+                <h3>Language Flow</h3>
+                <div id="flowVis" class="flow-container" role="list" aria-label="Language flow visualization"></div>
+
+                <div class="legend" role="list" aria-label="Language legend">
+                    <div class="legend-item" role="listitem">
+                        <div class="dot bisaya" aria-hidden="true"></div> Bisaya
+                    </div>
+                    <div class="legend-item" role="listitem">
+                        <div class="dot tagalog" aria-hidden="true"></div> Tagalog
+                    </div>
+                    <div class="legend-item" role="listitem">
+                        <div class="dot shared" aria-hidden="true"></div> Shared/Both
+                    </div>
+                </div>
+            </div>
+
+            <!-- Morphological Breakdown -->
+            <div class="detailed-results">
+                <h3>Morphological Breakdown</h3>
+                <div id="cardsContainer" class="cards-grid" role="list" aria-label="Morphological breakdown cards">
+                    <!-- Cards injected here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M4 7h16M4 12h16M4 17h10" />
+                    </svg>
+                    <span class="logo-text">Bistag</span>
+                </div>
+                <p class="footer-tagline">
+                    Bisaya-Tagalog Code-Switching Morphological Analyzer
+                </p>
+            </div>
+            <div class="footer-right">
+                <p class="footer-credit">
+                    Built with DFA & Finite Automata • Group 1
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/utils.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/analyzer.js') }}" defer></script>
+</body>
+
+</html>

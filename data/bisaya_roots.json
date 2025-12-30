@@ -1,0 +1,272 @@
+{
+    "kaon": {
+        "meaning": "eat",
+        "pos": "verb",
+        "notes": "Common verb"
+    },
+    "balay": {
+        "meaning": "house",
+        "pos": "noun",
+        "notes": ""
+    },
+    "dako": {
+        "meaning": "big",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "gamay": {
+        "meaning": "small",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "buhat": {
+        "meaning": "do/make",
+        "pos": "verb",
+        "notes": "Also means 'create'"
+    },
+    "lakaw": {
+        "meaning": "walk",
+        "pos": "verb",
+        "notes": ""
+    },
+    "dagan": {
+        "meaning": "run",
+        "pos": "verb",
+        "notes": ""
+    },
+    "palit": {
+        "meaning": "buy",
+        "pos": "verb",
+        "notes": ""
+    },
+    "hatag": {
+        "meaning": "give",
+        "pos": "verb",
+        "notes": ""
+    },
+    "gugma": {
+        "meaning": "love",
+        "pos": "noun",
+        "notes": ""
+    },
+    "tan-aw": {
+        "meaning": "watch/look",
+        "pos": "verb",
+        "notes": ""
+    },
+    "inom": {
+        "meaning": "drink",
+        "pos": "verb",
+        "notes": ""
+    },
+    "tawag": {
+        "meaning": "call",
+        "pos": "verb",
+        "notes": ""
+    },
+    "huna-huna": {
+        "meaning": "think",
+        "pos": "verb",
+        "notes": ""
+    },
+    "kanta": {
+        "meaning": "sing",
+        "pos": "verb",
+        "notes": ""
+    },
+    "sayaw": {
+        "meaning": "dance",
+        "pos": "verb",
+        "notes": ""
+    },
+    "sulat": {
+        "meaning": "write",
+        "pos": "verb",
+        "notes": ""
+    },
+    "basa": {
+        "meaning": "read",
+        "pos": "verb",
+        "notes": ""
+    },
+    "lingkod": {
+        "meaning": "sit",
+        "pos": "verb",
+        "notes": ""
+    },
+    "tindog": {
+        "meaning": "stand",
+        "pos": "verb",
+        "notes": ""
+    },
+    "tulog": {
+        "meaning": "sleep",
+        "pos": "verb",
+        "notes": ""
+    },
+    "mata": {
+        "meaning": "wake up",
+        "pos": "verb",
+        "notes": "Also means 'eye'"
+    },
+    "igo": {
+        "meaning": "hit/enough",
+        "pos": "verb",
+        "notes": ""
+    },
+    "kuha": {
+        "meaning": "get/take",
+        "pos": "verb",
+        "notes": ""
+    },
+    "hulat": {
+        "meaning": "wait",
+        "pos": "verb",
+        "notes": ""
+    },
+    "istorya": {
+        "meaning": "talk/story",
+        "pos": "verb",
+        "notes": ""
+    },
+    "katawa": {
+        "meaning": "laugh",
+        "pos": "verb",
+        "notes": ""
+    },
+    "hilak": {
+        "meaning": "cry",
+        "pos": "verb",
+        "notes": ""
+    },
+    "singgit": {
+        "meaning": "shout",
+        "pos": "verb",
+        "notes": ""
+    },
+    "ngisi": {
+        "meaning": "smile",
+        "pos": "verb",
+        "notes": ""
+    },
+    "gwapa": {
+        "meaning": "beautiful (f)",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "gwapo": {
+        "meaning": "handsome (m)",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "maot": {
+        "meaning": "ugly",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "lami": {
+        "meaning": "delicious",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "pait": {
+        "meaning": "bitter",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "tam-is": {
+        "meaning": "sweet",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "init": {
+        "meaning": "hot",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "bugnaw": {
+        "meaning": "cold",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "layo": {
+        "meaning": "far",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "duol": {
+        "meaning": "near",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "buntag": {
+        "meaning": "morning",
+        "pos": "noun",
+        "notes": ""
+    },
+    "udto": {
+        "meaning": "noon",
+        "pos": "noun",
+        "notes": ""
+    },
+    "hapon": {
+        "meaning": "afternoon",
+        "pos": "noun",
+        "notes": ""
+    },
+    "gabii": {
+        "meaning": "evening",
+        "pos": "noun",
+        "notes": ""
+    },
+    "adlaw": {
+        "meaning": "day/sun",
+        "pos": "noun",
+        "notes": ""
+    },
+    "bulan": {
+        "meaning": "moon/month",
+        "pos": "noun",
+        "notes": ""
+    },
+    "tuig": {
+        "meaning": "year",
+        "pos": "noun",
+        "notes": ""
+    },
+    "dalaga": {
+        "meaning": "lady",
+        "pos": "noun",
+        "notes": ""
+    },
+    "ulitawo": {
+        "meaning": "gentleman",
+        "pos": "noun",
+        "notes": ""
+    },
+    "tigulang": {
+        "meaning": "old",
+        "pos": "adjective",
+        "notes": ""
+    },
+    "bata": {
+        "meaning": "child/young",
+        "pos": "noun",
+        "notes": ""
+    },
+    "tawo": {
+        "meaning": "person",
+        "pos": "noun",
+        "notes": ""
+    },
+    "iro": {
+        "meaning": "dog",
+        "pos": "noun",
+        "notes": ""
+    },
+    "iring": {
+        "meaning": "cat",
+        "pos": "noun",
+        "notes": ""
+    }
+}

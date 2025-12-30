@@ -1,0 +1,10 @@
+build/
+lib/
+__pycache__/
+*.o
+*.so
+*.dll
+*.exe
+.env
+.venv/
+.DS_Store

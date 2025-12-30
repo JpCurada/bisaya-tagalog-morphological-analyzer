@@ -1,0 +1,130 @@
+{
+  "nag-": {
+    "language": "Both",
+    "function": "actor_focus_completed",
+    "compatible_pos": [
+      "verb",
+      "noun",
+      "adjective"
+    ]
+  },
+  "mag-": {
+    "language": "Both",
+    "function": "actor_focus_contemplated",
+    "compatible_pos": [
+      "verb",
+      "noun"
+    ]
+  },
+  "pag-": {
+    "language": "Both",
+    "function": "nominalization",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "gi-": {
+    "language": "Bisaya",
+    "function": "object_focus_completed",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "um-": {
+    "language": "Tagalog",
+    "function": "actor_focus",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "ma-": {
+    "language": "Both",
+    "function": "ability_state",
+    "compatible_pos": [
+      "verb",
+      "adjective"
+    ]
+  },
+  "na-": {
+    "language": "Both",
+    "function": "completed_state",
+    "compatible_pos": [
+      "verb",
+      "adjective"
+    ]
+  },
+  "ka-": {
+    "language": "Both",
+    "function": "associative_nominalization",
+    "compatible_pos": [
+      "noun",
+      "adjective",
+      "verb"
+    ]
+  },
+  "ipa-": {
+    "language": "Bisaya",
+    "function": "causative_object_focus",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "mang-": {
+    "language": "Both",
+    "function": "distributive_actor_focus",
+    "compatible_pos": [
+      "verb",
+      "noun"
+    ]
+  },
+  "pang-": {
+    "language": "Both",
+    "function": "instrumental",
+    "compatible_pos": [
+      "noun",
+      "verb"
+    ]
+  },
+  "maka-": {
+    "language": "Both",
+    "function": "ability",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "naka-": {
+    "language": "Both",
+    "function": "ability_completed",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "hing-": {
+    "language": "Bisaya",
+    "function": "frequentative",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "mo-": {
+    "language": "Bisaya",
+    "function": "actor_focus_future",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "mi-": {
+    "language": "Bisaya",
+    "function": "actor_focus_past",
+    "compatible_pos": [
+      "verb"
+    ]
+  },
+  "ni-": {
+    "language": "Bisaya",
+    "function": "actor_focus_past",
+    "compatible_pos": [
+      "verb"
+    ]
+  }
+}

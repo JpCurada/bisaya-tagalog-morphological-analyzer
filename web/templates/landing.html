@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistag - Bisaya-Tagalog Morphological Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M4 7h16M4 12h16M4 17h10" />
+                </svg>
+                <span class="logo-text">Bistag</span>
+            </div>
+            <a href="/analyzer" class="btn-primary">
+                Open Analyzer
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <circle cx="6" cy="6" r="6" fill="currentColor" />
+                </svg>
+                Powered by Deterministic Finite Automata
+            </div>
+
+            <h1 class="hero-title">
+                Decode Code-Switching<br />
+                Between <span class="gradient-text">Bisaya & Tagalog</span>
+            </h1>
+
+            <p class="hero-description">
+                A sophisticated morphological analyzer that breaks down word structures,
+                identifies language patterns, and reveals the intricate interplay between
+                two Philippine languages.
+            </p>
+
+            <div class="hero-actions">
+                <a href="/analyzer" class="btn-hero-primary">
+                    Start Analyzing
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7 4L14 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Visual Demo -->
+            <div class="demo-container">
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="demo-title">Example Analysis</span>
+                    </div>
+                    <div class="demo-content">
+                        <div class="demo-input">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <span>"Nag-kaon ka na lab"</span>
+                        </div>
+                        <div class="demo-output">
+                            <div class="morpheme-group">
+                                <span class="morpheme prefix">nag-</span>
+                                <span class="morpheme root">kaon</span>
+                                <div class="morpheme-info">
+                                    <span class="info-label">Bisaya</span>
+                                    <span class="info-meaning">eat</span>
+                                </div>
+                            </div>
+                            <div class="morpheme-group">
+                                <span class="morpheme root">ka</span>
+                                <div class="morpheme-info">
+                                    <span class="info-label">Shared</span>
+                                    <span class="info-meaning">you</span>
+                                </div>
+                            </div>
+                            <div class="morpheme-group">
+                                <span class="morpheme root">na</span>
+                                <div class="morpheme-info">
+                                    <span class="info-label">Shared</span>
+                                    <span class="info-meaning">already</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="section-header">
+            <h2 class="section-title">What Bistag Does</h2>
+            <p class="section-subtitle">
+                Computational linguistics meets modern web technology
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                </div>
+                <h3 class="feature-title">Morphological Decomposition</h3>
+                <p class="feature-description">
+                    Breaks down words into prefixes, roots, and suffixes using DFA-based pattern recognition.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                        <line x1="12" y1="22.08" x2="12" y2="12" />
+                    </svg>
+                </div>
+                <h3 class="feature-title">Code-Switching Detection</h3>
+                <p class="feature-description">
+                    Identifies language transitions in real-time, mapping the flow between Bisaya and Tagalog.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                </div>
+                <h3 class="feature-title">Rich Lexicon Database</h3>
+                <p class="feature-description">
+                    Comprehensive dictionaries with meanings, parts of speech, and etymological origins.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <h3 class="feature-title">Visual Language Flow</h3>
+                <p class="feature-description">
+                    Interactive visualizations that make linguistic patterns and code-switching instantly clear.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+        </div>
+
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                    </svg>
+                </div>
+                <h3 class="step-title">Input Text</h3>
+                <p class="step-description">
+                    Type or paste any Bisaya-Tagalog mixed text into the analyzer.
+                </p>
+            </div>
+
+            <div class="step-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24" />
+                    </svg>
+                </div>
+                <h3 class="step-title">DFA Processing</h3>
+                <p class="step-description">
+                    The engine analyzes each word through a deterministic finite automaton.
+                </p>
+            </div>
+
+            <div class="step-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 3v18h18" />
+                        <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+                    </svg>
+                </div>
+                <h3 class="step-title">Visual Results</h3>
+                <p class="step-description">
+                    Get detailed breakdowns with meanings and language flow visualization.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Analyze?</h2>
+            <p class="cta-description">
+                Start exploring Bisaya-Tagalog code-switching patterns today.
+            </p>
+            <a href="/analyzer" class="btn-cta">
+                Launch Bistag
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M7 4L14 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M4 7h16M4 12h16M4 17h10" />
+                    </svg>
+                    <span class="logo-text">Bistag</span>
+                </div>
+                <p class="footer-tagline">
+                    Bisaya-Tagalog Code-Switching Morphological Analyzer
+                </p>
+            </div>
+            <div class="footer-right">
+                <p class="footer-credit">
+                    Built with DFA & Finite Automata • Group 1
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+
+</html>
