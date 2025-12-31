@@ -1,0 +1,5 @@
+/* Content Script Styles */
+#bistag-selection-overlay * {
+    all: initial;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
