@@ -113,7 +113,7 @@ void analyze_word(const char* word, AnalysisResult* res) {
         // safe_strcpy size is total buffer size. len chars + null needs len+1
         // Wait, safe_strcpy takes size. So to copy 'len' chars, we need buffer of len+1.
         // strncpy is safer here.
-        strncpy(possible_prefix, current_str, len);
+        memcpy(possible_prefix, current_str, len);
         possible_prefix[len] = '\0';
         
         prefix_val = ht_lookup(prefix_table, possible_prefix);
@@ -182,7 +182,8 @@ void analyze_word(const char* word, AnalysisResult* res) {
                 // Check if remainder is root
                 char potential_root[MAX_WORD_LEN];
                 size_t root_len = slen - len;
-                strncpy(potential_root, stripped_word, root_len);
+                // Use memcpy instead of strncpy to avoid truncation warnings
+                memcpy(potential_root, stripped_word, root_len);
                 potential_root[root_len] = '\0';
                 
                 // If hyphenated "kaon-an", suffix is "-an", len is 3. 
