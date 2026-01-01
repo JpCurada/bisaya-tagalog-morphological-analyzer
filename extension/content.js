@@ -197,27 +197,31 @@
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-                // Account for device pixel ratio
-                const dpr = window.devicePixelRatio || 1;
+                // The captured image already accounts for device pixel ratio
+                // So we just need to crop the selected area
+                canvas.width = rect.width;
+                canvas.height = rect.height;
 
-                canvas.width = rect.width * dpr;
-                canvas.height = rect.height * dpr;
-
+                // Draw the cropped portion
                 ctx.drawImage(
                     img,
-                    rect.left * dpr,
-                    rect.top * dpr,
-                    rect.width * dpr,
-                    rect.height * dpr,
-                    0,
-                    0,
-                    rect.width * dpr,
-                    rect.height * dpr
+                    rect.left,  // Source x
+                    rect.top,   // Source y  
+                    rect.width, // Source width
+                    rect.height, // Source height
+                    0,          // Dest x
+                    0,          // Dest y
+                    rect.width, // Dest width
+                    rect.height // Dest height
                 );
 
-                resolve(canvas.toDataURL('image/png'));
+                // Convert to JPEG for smaller file size
+                resolve(canvas.toDataURL('image/jpeg', 0.92));
             };
-            img.onerror = reject;
+            img.onerror = (err) => {
+                console.error('Image load error:', err);
+                reject(new Error('Failed to load captured image'));
+            };
             img.src = dataUrl;
         });
     }

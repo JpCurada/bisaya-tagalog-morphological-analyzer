@@ -1,12 +1,14 @@
 // OCR Configuration
 const OCR_CONFIG = {
-    apiKey: 'K87899142388957', // Free OCR.space API key
+    apiKey: 'API_KEY', // Your personal OCR.space API key
     apiUrl: 'https://api.ocr.space/parse/image',
     timeout: 30000,
-    maxRetries: 2
+    maxRetries: 2,
+    imageQuality: 0.60,
+    maxImageSize: 1000 // Reduced to 1000 for max speed
 };
 
-// Preprocess image for better OCR accuracy
+// Preprocess image for better OCR accuracy and smaller size
 async function preprocessImage(imageDataUrl) {
     return new Promise((resolve, reject) => {
         const img = new Image();
@@ -15,22 +17,30 @@ async function preprocessImage(imageDataUrl) {
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
-            // Calculate optimal size based on device pixel ratio
+            // Calculate optimal size based on device pixel ratio and max size
             const devicePxRatio = window.devicePixelRatio || 1;
-            const scaleValue = 1 / devicePxRatio;
+            let width = img.width;
+            let height = img.height;
 
-            const wantedWidth = img.width * scaleValue;
-            const wantedHeight = img.height * scaleValue;
+            // Resize if too large
+            if (width > OCR_CONFIG.maxImageSize || height > OCR_CONFIG.maxImageSize) {
+                const ratio = Math.min(OCR_CONFIG.maxImageSize / width, OCR_CONFIG.maxImageSize / height);
+                width = Math.floor(width * ratio);
+                height = Math.floor(height * ratio);
+            }
 
-            // Set canvas dimensions
-            canvas.width = wantedWidth;
-            canvas.height = wantedHeight;
+            canvas.width = width;
+            canvas.height = height;
 
-            // Draw resized image
-            ctx.drawImage(img, 0, 0, wantedWidth, wantedHeight);
+            // Draw image
+            ctx.drawImage(img, 0, 0, width, height);
 
-            // Convert back to data URL
-            resolve(canvas.toDataURL('image/png'));
+            // Convert to JPEG for smaller payload (prevent timeouts)
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', OCR_CONFIG.imageQuality);
+
+            // Log for debugging
+            console.log(`Image processed: ${imageDataUrl.length} -> ${compressedDataUrl.length} chars`);
+            resolve(compressedDataUrl);
         };
 
         img.onerror = reject;
@@ -44,13 +54,17 @@ async function performOCRWithAPI(imageDataUrl) {
 
     // Convert data URL to blob
     const base64Data = imageDataUrl.split(',')[1];
-    formData.append('base64Image', `data:image/png;base64,${base64Data}`);
+    // Detect format or default to jpeg if we just compressed it
+    const isJpeg = imageDataUrl.startsWith('data:image/jpeg');
+    const mimeType = isJpeg ? 'image/jpeg' : 'image/png';
+
+    formData.append('base64Image', `data:${mimeType};base64,${base64Data}`);
     formData.append('apikey', OCR_CONFIG.apiKey);
     formData.append('language', 'eng');
     formData.append('isOverlayRequired', 'false');
     formData.append('detectOrientation', 'true');
     formData.append('scale', 'true');
-    formData.append('OCREngine', '2'); // Engine 2 is better for general text
+    formData.append('OCREngine', '1'); // Engine 1 is faster (Legacy)
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), OCR_CONFIG.timeout);
@@ -80,8 +94,13 @@ async function performOCRWithAPI(imageDataUrl) {
 
         return result.ParsedResults[0].ParsedText.trim();
 
-    } finally {
+    } catch (error) {
         clearTimeout(timeoutId);
+        // Handle timeout specifically
+        if (error.name === 'AbortError' || error.name === 'DOMException') {
+            throw new Error('OCR request timed out. Please try a smaller area or check your internet connection.');
+        }
+        throw error;
     }
 }
 
@@ -96,26 +115,11 @@ async function performOCR(imageDataUrl, statusCallback) {
                 statusCallback(`Performing OCR... (Attempt ${attempt}/${OCR_CONFIG.maxRetries})`);
             }
 
-            // Preprocess image for better accuracy
             const processedImage = await preprocessImage(imageDataUrl);
-
-            // Perform OCR using API
             const text = await performOCRWithAPI(processedImage);
 
             console.log(`OCR completed successfully`);
-
-            if (!text) {
-                if (attempt < OCR_CONFIG.maxRetries) {
-                    if (statusCallback) {
-                        statusCallback('No text detected, retrying...');
-                    }
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                    continue;
-                }
-                throw new Error('No text detected in the screenshot. Please try again with clearer text.');
-            }
-
-            return text; // Return the extracted text
+            return text;
 
         } catch (error) {
             console.error(`OCR error (attempt ${attempt}):`, error);
@@ -126,7 +130,13 @@ async function performOCR(imageDataUrl, statusCallback) {
                 }
                 await new Promise(resolve => setTimeout(resolve, 1000));
             } else {
-                throw error; // Throw error to be handled by caller
+                // If it's the last attempt, rethrow nicely usually, but here we throw to caller
+                // Normalize error message if possible
+                if (error.message) {
+                    throw error;
+                } else {
+                    throw new Error('OCR failed for unknown reason.');
+                }
             }
         }
     }

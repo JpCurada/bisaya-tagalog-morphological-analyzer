@@ -89,9 +89,9 @@ async function checkPendingScreenshot() {
     const result = await chrome.storage.local.get(['pendingScreenshot', 'screenshotTimestamp']);
 
     if (result.pendingScreenshot) {
-        // Check if screenshot is recent (within last 5 seconds)
+        // Check if screenshot is recent (within last 60 seconds)
         const age = Date.now() - (result.screenshotTimestamp || 0);
-        if (age < 5000) {
+        if (age < 60000) {
             console.log('Found pending screenshot, processing...');
             handleScreenshotCapture(result.pendingScreenshot);
             // Clear the pending screenshot
@@ -184,16 +184,23 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
+
 // Handle screenshot capture and OCR
 async function handleScreenshotCapture(imageDataUrl) {
     try {
         setState('processing');
+
+        // Log image size for debugging
+        const sizeKB = (imageDataUrl.length * 0.75 / 1024).toFixed(2);
+        console.log(`Screenshot captured: ${sizeKB}KB`);
 
         // Perform OCR with status callback
         const text = await performOCR(imageDataUrl, updateStatus);
 
         extractedText = text;
         elements.extractedTextArea.value = extractedText;
+
+        console.log(`OCR completed successfully. Text length: ${text.length} characters`);
 
         // Auto-analyze if enabled
         if (elements.autoAnalyze.checked) {
