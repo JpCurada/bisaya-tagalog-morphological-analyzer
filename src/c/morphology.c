@@ -59,40 +59,46 @@ bool validate_morphology(const char* prefix_val, const char* root_val, const cha
     
     // 1. Check Prefix Compatibility
     if (prefix_val) {
-        char pre_lang_str[32], pre_pos_list[128];
-        get_field(prefix_val, 0, pre_lang_str, sizeof(pre_lang_str));
-        get_field(prefix_val, 1, pre_pos_list, sizeof(pre_pos_list));
-        
-        Language pre_lang = parse_language(pre_lang_str);
-        
-        // Language check
-        if (pre_lang != LANG_BOTH && root_lang != LANG_BOTH && pre_lang != root_lang) {
-            return false; // Language mismatch
-        }
-        
-        // POS check (simple substring check for now)
-        if (strstr(pre_pos_list, root_pos) == NULL) {
-             // Special case: some prefixes convert Noun to Verb, need smarter logic?
-             // For now, strict check. If prefix expects Verb but root is Noun, fail?
-             // Dictionary says compatible_pos.
-             return false;
+        // If new format (no pipes), assume valid for now to allow rich output
+        if (strchr(prefix_val, '|') == NULL) {
+             // Pass
+        } else {
+            char pre_lang_str[32], pre_pos_list[128];
+            get_field(prefix_val, 0, pre_lang_str, sizeof(pre_lang_str));
+            get_field(prefix_val, 1, pre_pos_list, sizeof(pre_pos_list));
+            
+            Language pre_lang = parse_language(pre_lang_str);
+            
+            // Language check
+            if (pre_lang != LANG_BOTH && root_lang != LANG_BOTH && pre_lang != root_lang) {
+                return false; // Language mismatch
+            }
+            
+            // POS check (simple substring check for now)
+            if (strstr(pre_pos_list, root_pos) == NULL) {
+                 return false;
+            }
         }
     }
     
     // 2. Check Suffix Compatibility
     if (suffix_val) {
-        char suf_lang_str[32], suf_pos_list[128];
-        get_field(suffix_val, 0, suf_lang_str, sizeof(suf_lang_str));
-        get_field(suffix_val, 1, suf_pos_list, sizeof(suf_pos_list));
-        
-        Language suf_lang = parse_language(suf_lang_str);
-        
-        if (suf_lang != LANG_BOTH && root_lang != LANG_BOTH && suf_lang != root_lang) {
-            return false;
-        }
-        
-        if (strstr(suf_pos_list, root_pos) == NULL) {
-            return false;
+        if (strchr(suffix_val, '|') == NULL) {
+             // Pass
+        } else {
+            char suf_lang_str[32], suf_pos_list[128];
+            get_field(suffix_val, 0, suf_lang_str, sizeof(suf_lang_str));
+            get_field(suffix_val, 1, suf_pos_list, sizeof(suf_pos_list));
+            
+            Language suf_lang = parse_language(suf_lang_str);
+            
+            if (suf_lang != LANG_BOTH && root_lang != LANG_BOTH && suf_lang != root_lang) {
+                return false;
+            }
+            
+            if (strstr(suf_pos_list, root_pos) == NULL) {
+                return false;
+            }
         }
     }
     

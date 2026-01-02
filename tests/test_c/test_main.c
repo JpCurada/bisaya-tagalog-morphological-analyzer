@@ -19,13 +19,11 @@ void print_result(const char* label, AnalysisResult* res) {
 
 int main() {
     // Dummy Data
-    const char* prefix_data = 
-        "nag-|Both|actor_focus_completed,verb\n"
-        "mag-|Both|actor_focus_contemplated,verb";
-    
-    const char* suffix_data = 
-        "-an|Both|locative_focus,verb,noun";
-        
+    // Dummy JSON Data
+    const char* affix_json = 
+        "{ \"verbal_affixes\": { \"actor_focus\": { \"affixes\": [\"nag-\", \"mag-\"] } }, "
+          "\"suffix\": { \"affixes\": [\"-an\"] } }"; // simplified
+
     const char* bisaya_data = 
         "kaon|Bisaya|verb\n"
         "balay|Bisaya|noun";
@@ -33,10 +31,13 @@ int main() {
     const char* tagalog_data = 
         "kain|Tagalog|verb";
         
+    const char* hiligaynon_data = 
+        "kaon|Hiligaynon|verb";
+
     const char* shared_data = 
         "luto|Both|verb";
 
-    init_analyzer(prefix_data, suffix_data, bisaya_data, tagalog_data, shared_data);
+    init_analyzer(affix_json, bisaya_data, tagalog_data, hiligaynon_data, shared_data);
     
     AnalysisResult res;
     

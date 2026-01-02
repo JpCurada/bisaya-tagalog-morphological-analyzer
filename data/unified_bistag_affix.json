@@ -1,0 +1,1112 @@
+{
+  "language_name_affixes": {
+    
+    "verbal_affixes": {
+      
+      "actor_focus_active": {
+        "description": "Subject is the agent/doer of the action",
+        
+        "basic": {
+          "cebuano_name": "punctual",
+          "tagalog_name": "contemplated",
+          "future_nonpast": {
+            "affixes": ["mu-", "mag-", "mang-", "-um-"],
+            "examples": [
+              {"root": "palit", "form": "mupalit", "gloss": "will buy (CEB)"},
+              {"root": "bili", "form": "bumili", "gloss": "will buy (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["mi-", "ni-", "nag-", "nang-", "-um-"],
+            "examples": [
+              {"root": "palit", "form": "mipalit", "gloss": "bought (CEB)"},
+              {"root": "bili", "form": "bumili", "gloss": "bought (TAG)"}
+            ]
+          },
+          "subjunctive": {
+            "affixes": ["mu-", "mag-", "mang-", "-um-"],
+            "note": "Cebuano only; Tagalog uses contemplated form",
+            "examples": [
+              {"root": "palit", "form": "mupalit", "gloss": "buy (subjunctive) (CEB)"}
+            ]
+          }
+        },
+        
+        "durative_incompleted": {
+          "cebuano_name": "durative",
+          "tagalog_name": "incompleted",
+          "formation": {
+            "cebuano": "mag-/nag- prefixes",
+            "tagalog": "reduplication + basic affixes"
+          },
+          "future_nonpast": {
+            "affixes": ["mag-", "maga-", "nag-...-in", "-um-...-in"],
+            "examples": [
+              {"root": "palit", "form": "magpalit", "gloss": "will be buying (CEB)"},
+              {"root": "bili", "form": "bibili", "gloss": "will be buying (TAG)"}
+            ]
+          },
+          "past_ongoing": {
+            "affixes": ["nag-", "naga-", "ga-"],
+            "examples": [
+              {"root": "palit", "form": "nagpalit", "gloss": "was buying (CEB)"},
+              {"root": "bili", "form": "bumibili", "gloss": "was buying (TAG)"}
+            ]
+          }
+        },
+        
+        "potential_abilitative": {
+          "description": "Ability, possibility, or accidental action",
+          "future_nonpast": {
+            "affixes": ["maka-", "ka-", "makapag-", "makapang-"],
+            "examples": [
+              {"root": "palit", "form": "makapalit", "gloss": "can buy (CEB)"},
+              {"root": "bili", "form": "makabili", "gloss": "can buy (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["naka-", "ka-"],
+            "examples": [
+              {"root": "palit", "form": "nakapalit", "gloss": "was able to buy (CEB)"},
+              {"root": "bili", "form": "nakabili", "gloss": "was able to buy (TAG)"}
+            ]
+          }
+        },
+        
+        "recent_perfective": {
+          "description": "Recently completed action",
+          "affixes": ["ka-...-in"],
+          "note": "Tagalog only",
+          "examples": [
+            {"root": "dating", "form": "kadating", "gloss": "just arrived (TAG)"}
+          ]
+        }
+      },
+      
+      "object_focus_direct_passive": {
+        "description": "Subject is the recipient/patient of the action",
+        
+        "basic": {
+          "cebuano_name": "punctual",
+          "tagalog_name": "contemplated",
+          "future_nonpast": {
+            "affixes": ["-un", "-in", "-hin"],
+            "examples": [
+              {"root": "palit", "form": "palitun", "gloss": "will be bought (CEB)"},
+              {"root": "bili", "form": "bilhin", "gloss": "will be bought (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["gi-", "-in", "-hin"],
+            "examples": [
+              {"root": "palit", "form": "gipalit", "gloss": "was bought (CEB)"},
+              {"root": "bili", "form": "binili", "gloss": "was bought (TAG)"}
+            ]
+          },
+          "subjunctive_imperative": {
+            "affixes": ["-a"],
+            "note": "Cebuano only; Tagalog uses contemplated form for imperative",
+            "examples": [
+              {"root": "palit", "form": "palita", "gloss": "buy it! (CEB)"}
+            ]
+          }
+        },
+        
+        "durative_incompleted": {
+          "cebuano_name": "durative",
+          "tagalog_name": "incompleted",
+          "formation": {
+            "cebuano": "paga-...-un (literary only)",
+            "tagalog": "reduplication + -in/-hin"
+          },
+          "future_nonpast": {
+            "affixes": ["paga-...-un", "-in...-in", "-hin...-in"],
+            "examples": [
+              {"root": "lútù", "form": "pagalutúun", "gloss": "will be being cooked (CEB, literary)"},
+              {"root": "bili", "form": "bibilhin", "gloss": "will be being bought (TAG)"}
+            ]
+          },
+          "past_ongoing": {
+            "affixes": ["gina-", "-in...-in"],
+            "examples": [
+              {"root": "lútù", "form": "ginalútù", "gloss": "was being cooked (CEB, literary)"},
+              {"root": "bili", "form": "binibili", "gloss": "was being bought (TAG)"}
+            ]
+          }
+        },
+        
+        "potential_abilitative": {
+          "future_nonpast": {
+            "affixes": ["ma-"],
+            "examples": [
+              {"root": "palit", "form": "mapalit", "gloss": "can be bought (CEB)"},
+              {"root": "bili", "form": "mabili", "gloss": "can be bought (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["na-"],
+            "examples": [
+              {"root": "palit", "form": "napalit", "gloss": "was able to be bought (CEB)"},
+              {"root": "bili", "form": "nabili", "gloss": "was able to be bought (TAG)"}
+            ]
+          }
+        }
+      },
+      
+      "locative_focus_local_passive": {
+        "description": "Subject is the location or beneficiary of the action",
+        
+        "basic": {
+          "cebuano_name": "punctual",
+          "tagalog_name": "contemplated",
+          "future_nonpast": {
+            "affixes": ["-an", "-han"],
+            "examples": [
+              {"root": "palit", "form": "palitan", "gloss": "will be bought from/for (CEB)"},
+              {"root": "bili", "form": "bilhan", "gloss": "will be bought from/for (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["gi-...-an", "-an", "-han", "-in...-an"],
+            "examples": [
+              {"root": "palit", "form": "gipalitan", "gloss": "was bought from/for (CEB)"},
+              {"root": "bili", "form": "binilhan", "gloss": "was bought from/for (TAG)"}
+            ]
+          },
+          "subjunctive_imperative": {
+            "affixes": ["-i"],
+            "note": "Cebuano only",
+            "examples": [
+              {"root": "palit", "form": "paliti", "gloss": "buy from/for it! (CEB)"}
+            ]
+          }
+        },
+        
+        "durative_incompleted": {
+          "future_nonpast": {
+            "affixes": ["paga-...-an", "-in...-an", "-in...-han"],
+            "examples": [
+              {"root": "kaun", "form": "pagakaunan", "gloss": "will be being eaten from (CEB, literary)"},
+              {"root": "bili", "form": "binibilhan", "gloss": "will be being bought from (TAG)"}
+            ]
+          },
+          "past_ongoing": {
+            "affixes": ["gina-...-an", "-in...-an"],
+            "examples": [
+              {"root": "kaun", "form": "ginakaunan", "gloss": "was being eaten from (CEB, literary)"},
+              {"root": "bili", "form": "binibilhan", "gloss": "was being bought from (TAG)"}
+            ]
+          }
+        },
+        
+        "potential_abilitative": {
+          "future_nonpast": {
+            "affixes": ["ma-...-an", "ka-...-an"],
+            "examples": [
+              {"root": "palit", "form": "mapalitan", "gloss": "can be bought from/for (CEB)"},
+              {"root": "bili", "form": "mabilhan", "gloss": "can be bought from/for (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["na-...-an"],
+            "examples": [
+              {"root": "palit", "form": "napalitan", "gloss": "was able to be bought from/for (CEB/TAG)"}
+            ]
+          }
+        }
+      },
+      "benefactive_instrumental_focus": {
+        "description": {
+          "cebuano": "Subject is the instrument or thing conveyed",
+          "tagalog": "Subject is the beneficiary or thing done for someone"
+        },
+        
+        "basic": {
+          "cebuano_name": "punctual",
+          "tagalog_name": "contemplated",
+          "future_nonpast": {
+            "affixes": ["i-", "ipag-"],
+            "examples": [
+              {"root": "dala", "form": "idala", "gloss": "will bring (it) (CEB)"},
+              {"root": "luto", "form": "ipagluto", "gloss": "will cook (for someone) (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["gi-", "i-", "ipag-", "-in-"],
+            "examples": [
+              {"root": "dala", "form": "gidala", "gloss": "was brought (CEB)"},
+              {"root": "luto", "form": "ipinagluto", "gloss": "was cooked for (TAG)"}
+            ]
+          },
+          "subjunctive_imperative": {
+            "affixes": ["i-"],
+            "note": "Cebuano only",
+            "examples": [
+              {"root": "dala", "form": "idala", "gloss": "bring it! (CEB)"}
+            ]
+          }
+        },
+        
+        "durative_incompleted": {
+          "future_nonpast": {
+            "affixes": ["iga-", "i-...-in", "ipag-...-in"],
+            "examples": [
+              {"root": "dala", "form": "igadala", "gloss": "will be bringing (CEB, literary)"},
+              {"root": "luto", "form": "ipagluluto", "gloss": "will be cooking for (TAG)"}
+            ]
+          },
+          "past_ongoing": {
+            "affixes": ["gina-", "i-...-in"],
+            "examples": [
+              {"root": "dala", "form": "ginadala", "gloss": "was being brought (CEB, literary)"},
+              {"root": "luto", "form": "ipinaglugluto", "gloss": "was being cooked for (TAG)"}
+            ]
+          }
+        },
+        
+        "potential_abilitative": {
+          "future_nonpast": {
+            "affixes": ["ma-", "ika-"],
+            "examples": [
+              {"root": "dala", "form": "madala", "gloss": "can be brought (CEB)"},
+              {"root": "dala", "form": "ikadala", "gloss": "can be brought (reason-based) (CEB)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["na-", "gika-"],
+            "examples": [
+              {"root": "dala", "form": "nadala", "gloss": "was able to be brought (CEB)"},
+              {"root": "dala", "form": "gikadala", "gloss": "was brought (reason) (CEB)"}
+            ]
+          }
+        }
+      },
+      
+      "instrumental_focus": {
+        "description": "Subject is the instrument used for the action (Tagalog)",
+        "note": "Tagalog distinguishes this from benefactive; Cebuano combines them",
+        
+        "basic": {
+          "tagalog_name": "contemplated",
+          "future_nonpast": {
+            "affixes": ["ipang-", "i-"],
+            "examples": [
+              {"root": "bili", "form": "ipambili", "gloss": "will use to buy (TAG)"}
+            ]
+          },
+          "past_completed": {
+            "affixes": ["ipinang-", "i-", "-in-"],
+            "examples": [
+              {"root": "bili", "form": "ipinambili", "gloss": "was used to buy (TAG)"}
+            ]
+          }
+        },
+        
+        "durative_incompleted": {
+          "future_nonpast": {
+            "affixes": ["ipinang-...-in", "i-...-in"],
+            "examples": [
+              {"root": "bili", "form": "ipinambibili", "gloss": "will be using to buy (TAG)"}
+            ]
+          }
+        }
+      }
+    },
+    
+    "derivational_affixes": {
+      
+      "causative": {
+        "description": "Make or have someone do something; allow something to happen",
+        "affixes": [
+          {
+            "affix": "pa-",
+            "language": "both",
+            "combines_with": "all voice/focus affixes",
+            "examples": [
+              {"language": "cebuano", "root": "lútù", "form": "palútù", "gloss": "have (someone) cook"},
+              {"language": "tagalog", "root": "kain", "form": "pakain", "gloss": "feed, make eat"}
+            ]
+          },
+          {
+            "affix": "magpa-",
+            "language": "tagalog",
+            "focus": "actor",
+            "examples": [
+              {"root": "gawa", "form": "magpagawa", "gloss": "have (someone) make"}
+            ]
+          },
+          {
+            "affix": "pa-...-in",
+            "language": "tagalog",
+            "focus": "object",
+            "examples": [
+              {"root": "kain", "form": "pakainin", "gloss": "feed (someone)"}
+            ]
+          },
+          {
+            "affix": "pa-...-an",
+            "language": "tagalog",
+            "focus": "locative",
+            "examples": [
+              {"root": "gawa", "form": "pagawaan", "gloss": "have made at/for"}
+            ]
+          },
+          {
+            "affix": "ipa-",
+            "language": "tagalog",
+            "focus": "benefactive",
+            "examples": [
+              {"root": "luto", "form": "ipaluto", "gloss": "have cooked for"}
+            ]
+          }
+        ]
+      },
+      
+      "distributive_professional": {
+        "description": "Action on multiple objects, professional activity, or habitual action",
+        "affixes": [
+          {
+            "affix": "paN-/maN-",
+            "language": "both",
+            "allomorphs": {
+              "cebuano": ["mam-", "man-", "mang-", "mangl-", "manl-"],
+              "tagalog": ["mam-", "man-", "many-", "ma-", "mang-"]
+            },
+            "phonology": {
+              "before_p_b": "mam-",
+              "before_t_d_s": "man-",
+              "before_k_vowel_h": "mang-",
+              "before_l_cebuano": "mangl- or manl-",
+              "hardening": "p→m, t→n, k→ng, s→n"
+            },
+            "examples": [
+              {"language": "cebuano", "root": "isda", "form": "mamingka", "gloss": "go fishing"},
+              {"language": "tagalog", "root": "isda", "form": "mangisda", "gloss": "go fishing"}
+            ]
+          },
+          {
+            "affix": "pang-/ipang-",
+            "language": "tagalog",
+            "type": "instrumental",
+            "allomorphs": ["pam-", "pan-", "pany-"],
+            "examples": [
+              {"root": "gulo", "form": "panggulo", "gloss": "instrument for disorder"}
+            ]
+          }
+        ]
+      },
+      
+      "social_reciprocal": {
+        "description": "Action done with others or mutually",
+        "affixes": [
+          {
+            "affix": "pakig-/makig-",
+            "language": "cebuano",
+            "allomorphs": ["makig-", "nakig-"],
+            "examples": [
+              {"root": "inúm", "form": "makiginúm", "gloss": "drink together with"}
+            ]
+          },
+          {
+            "affix": "maki-",
+            "language": "tagalog",
+            "type": "social_actor",
+            "examples": [
+              {"root": "laro", "form": "makilaro", "gloss": "play with others"}
+            ]
+          },
+          {
+            "affix": "makipag-",
+            "language": "tagalog",
+            "type": "social_reciprocal",
+            "examples": [
+              {"root": "usap", "form": "makipag-usap", "gloss": "converse with"}
+            ]
+          },
+          {
+            "affix": "mag-...-an",
+            "language": "tagalog",
+            "type": "reciprocal",
+            "examples": [
+              {"root": "kita", "form": "magkita-an", "gloss": "see each other"}
+            ]
+          },
+          {
+            "affix": "magka-",
+            "language": "both",
+            "type": "mutual_simultaneous",
+            "examples": [
+              {"language": "cebuano", "root": "sábut", "form": "magkasábut", "gloss": "come to mutual understanding"},
+              {"language": "tagalog", "root": "sunod", "form": "magkasunod", "gloss": "follow one another"}
+            ]
+          },
+          {
+            "affix": "magka-...-an",
+            "language": "tagalog",
+            "type": "intensive_reciprocal",
+            "examples": [
+              {"root": "tulak", "form": "magkatulakan", "gloss": "push each other"}
+            ]
+          },
+          {
+            "affix": "-ay/-anay",
+            "language": "cebuano",
+            "type": "reciprocal_suffix",
+            "examples": [
+              {"root": "lútù", "form": "lútùay", "gloss": "cook for each other"},
+              {"root": "sulti", "form": "sultiánay", "gloss": "converse"}
+            ]
+          },
+          {
+            "affix": "panggi-/manggi-",
+            "language": "cebuano",
+            "type": "collective",
+            "allomorphs": ["manggi-", "nanggi-"],
+            "examples": [
+              {"root": "káun", "form": "manggikáun", "gloss": "eat together"}
+            ]
+          }
+        ]
+      },
+      
+      "request_polite": {
+        "description": "Polite request forms",
+        "affixes": [
+          {
+            "affix": "paki-",
+            "language": "both",
+            "examples": [
+              {"language": "cebuano", "root": "tabang", "form": "pakitabang", "gloss": "please help"},
+              {"language": "tagalog", "root": "kuha", "form": "pakikuha", "gloss": "please get"}
+            ]
+          },
+          {
+            "affix": "paki-...-an",
+            "language": "tagalog",
+            "focus": "locative",
+            "examples": [
+              {"root": "lagay", "form": "pakilagyan", "gloss": "please put in/on"}
+            ]
+          },
+          {
+            "affix": "paki-...-i",
+            "language": "cebuano",
+            "focus": "locative",
+            "examples": [
+              {"root": "tabang", "form": "pakitabangi", "gloss": "please help with this"}
+            ]
+          },
+          {
+            "affix": "paki-...-a",
+            "language": "cebuano",
+            "focus": "direct",
+            "examples": [
+              {"root": "kúhà", "form": "pakikúhàa", "gloss": "please take this"}
+            ]
+          }
+        ]
+      },
+      
+      "involuntary_accidental": {
+        "description": "Unintentional or accidental action",
+        "affixes": [
+          {
+            "affix": "hi-/ha-",
+            "language": "cebuano",
+            "examples": [
+              {"root": "kaun", "form": "hikaun", "gloss": "accidentally eat"},
+              {"root": "kà", "form": "hakà", "gloss": "accidentally step on"}
+            ]
+          },
+          {
+            "affix": "hi-...-an",
+            "language": "cebuano",
+            "focus": "locative_accidental",
+            "examples": [
+              {"root": "bása", "form": "hibásàan", "gloss": "accidentally read to/at"}
+            ]
+          },
+          {
+            "affix": "ma-",
+            "language": "tagalog",
+            "note": "Also used for stative/involuntary in actor focus",
+            "examples": [
+              {"root": "tulog", "form": "matulog", "gloss": "fall asleep"}
+            ]
+          }
+        ]
+      },
+      
+      "intensive_complete": {
+        "description": "Intensive or complete action",
+        "affixes": [
+          {
+            "affix": "hiN-",
+            "language": "cebuano",
+            "examples": [
+              {"root": "bisayà", "form": "himbisayà", "gloss": "speak only Cebuano"}
+            ]
+          },
+          {
+            "affix": "hiN-...-an",
+            "language": "cebuano",
+            "examples": [
+              {"root": "bisayà", "form": "himbisayàan", "gloss": "speak Cebuano throughout"}
+            ]
+          },
+          {
+            "affix": "napaka-",
+            "language": "tagalog",
+            "type": "intensive_stative",
+            "examples": [
+              {"root": "ganda", "form": "napakaganda", "gloss": "very beautiful"}
+            ]
+          }
+        ]
+      },
+      
+      "stative": {
+        "description": "State of being or becoming",
+        "affixes": [
+          {
+            "affix": "ma-",
+            "language": "both",
+            "note": "In Cebuano, occurs with stative verbs; in Tagalog, broader usage",
+            "examples": [
+              {"language": "cebuano", "root": "pula", "form": "mapula", "gloss": "become red"},
+              {"language": "tagalog", "root": "ganda", "form": "maganda", "gloss": "beautiful"}
+            ]
+          },
+          {
+            "affix": "ka-",
+            "language": "tagalog",
+            "type": "recent_completion",
+            "examples": [
+              {"root": "dating", "form": "kadating", "gloss": "just arrived"}
+            ]
+          }
+        ]
+      },
+      
+      "professional_habitual_additional": {
+        "description": "Professional or habitual doer (Cebuano only)",
+        "affixes": [
+          {
+            "affix": "pani-/mani-",
+            "language": "cebuano",
+            "allomorphs": ["mani-", "nani-"],
+            "examples": [
+              {"root": "múlung", "form": "panimúlung", "gloss": "go hunting"}
+            ]
+          },
+          {
+            "affix": "paniN-/maniN-",
+            "language": "cebuano",
+            "allomorphs": ["maniN-", "naniN-"],
+            "examples": [
+              {"root": "káun", "form": "paningkáun", "gloss": "make a habit of eating"}
+            ]
+          }
+        ]
+      }
+    },
+    
+    "nominal_affixes": {
+      
+      "action_nominalization": {
+        "description": "Forms nouns referring to the action itself",
+        "affixes": [
+          {
+            "affix": "pag-",
+            "language": "tagalog",
+            "from": "mag- verbs",
+            "examples": [
+              {"root": "kain", "form": "pagkain", "gloss": "eating, food"}
+            ]
+          },
+          {
+            "affix": "pag-...-un",
+            "language": "cebuano",
+            "description": "Gerundive - act of being subjected to verb",
+            "examples": [
+              {"root": "lútù", "form": "paglutúun", "gloss": "the act of being cooked"}
+            ]
+          },
+          {
+            "affix": "pagka-",
+            "language": "tagalog",
+            "description": "State of being or abstract noun",
+            "examples": [
+              {"root": "tao", "form": "pagkatao", "gloss": "humanity, being a person"}
+            ]
+          },
+          {
+            "affix": "pagka-...-an",
+            "language": "tagalog",
+            "description": "Time or instance of action",
+            "examples": [
+              {"root": "kain", "form": "pagkakain", "gloss": "upon eating"}
+            ]
+          }
+        ]
+      },
+      
+      "instrument_nominalization": {
+        "description": "Forms nouns referring to instruments",
+        "affixes": [
+          {
+            "affix": "pang-",
+            "language": "both",
+            "allomorphs": ["pam-", "pan-", "pany-"],
+            "examples": [
+              {"language": "cebuano", "root": "sulat", "form": "panulat", "gloss": "writing instrument"},
+              {"language": "tagalog", "root": "gulo", "form": "panggulo", "gloss": "instrument for disorder"}
+            ]
+          },
+          {
+            "affix": "ipang-",
+            "language": "tagalog",
+            "examples": [
+              {"root": "bili", "form": "ipambili", "gloss": "something to use for buying"}
+            ]
+          }
+        ]
+      },
+      
+      "place_nominalization": {
+        "description": "Forms nouns referring to places",
+        "affixes": [
+          {
+            "affix": "-an/-han",
+            "language": "both",
+            "examples": [
+              {"language": "cebuano", "root": "kaun", "form": "kaunanan", "gloss": "dining place"},
+              {"language": "tagalog", "root": "aklat", "form": "aklatan", "gloss": "library"}
+            ]
+          },
+          {
+            "affix": "ka-...-an",
+            "language": "both",
+            "description": "Collective place or abstract noun",
+            "examples": [
+              {"language": "cebuano", "root": "lubi", "form": "kalubihan", "gloss": "coconut grove"},
+              {"language": "tagalog", "root": "kahoy", "form": "kakahoy-an", "gloss": "forest"}
+            ]
+          },
+          {
+            "affix": "pag-...-an",
+            "language": "tagalog",
+            "examples": [
+              {"root": "kain", "form": "pagkain-an", "gloss": "dining place"}
+            ]
+          },
+          {
+            "affix": "-anan",
+            "language": "cebuano",
+            "examples": [
+              {"root": "lingkod", "form": "lingkoranan", "gloss": "seat, place to sit"}
+            ]
+          }
+        ]
+      },
+      
+      "agent_nominalization": {
+        "description": "Forms nouns referring to the person who does the action",
+        "affixes": [
+          {
+            "affix": "mag-",
+            "language": "tagalog",
+            "description": "Occupation/profession with reduplication",
+            "examples": [
+              {"root": "basa", "form": "magbabasa", "gloss": "reader (professional)"}
+            ]
+          },
+          {
+            "affix": "mang-",
+            "language": "tagalog",
+            "description": "Occupation from mang- verbs with reduplication",
+            "allomorphs": ["mam-", "man-", "many-"],
+            "examples": [
+              {"root": "isda", "form": "mangingisda", "gloss": "fisherman"}
+            ]
+          },
+          {
+            "affix": "taga-",
+            "language": "tagalog",
+            "description": "Person from a place or habitual doer",
+            "examples": [
+              {"root": "luto", "form": "tagaluto", "gloss": "cook (person)"},
+              {"root": "Manila", "form": "taga-Manila", "gloss": "person from Manila"}
+            ]
+          }
+        ]
+      },
+      
+      "abstract_nominalization": {
+        "description": "Forms abstract nouns",
+        "affixes": [
+          {
+            "affix": "ka-",
+            "language": "both",
+            "note": "In Cebuano, also used for exclamatory adjectives",
+            "examples": [
+              {"language": "cebuano", "root": "buguy", "form": "kabuguy", "gloss": "what a tramp!"},
+              {"language": "tagalog", "root": "ganda", "form": "kagandahan", "gloss": "beauty"}
+            ]
+          },
+          {
+            "affix": "ka-...-an",
+            "language": "both",
+            "examples": [
+              {"language": "cebuano", "root": "daku", "form": "kadakúan", "gloss": "largeness"},
+              {"language": "tagalog", "root": "ganda", "form": "kagandahan", "gloss": "beauty"}
+            ]
+          }
+        ]
+      },
+      
+      "object_characteristic_nominalization": {
+        "description": "Forms nouns referring to object of action or characteristic",
+        "affixes": [
+          {
+            "affix": "-in",
+            "language": "tagalog",
+            "examples": [
+              {"root": "kain", "form": "kainin", "gloss": "food, something to eat"},
+              {"root": "puti", "form": "puti-in", "gloss": "whitish"}
+            ]
+          }
+        ]
+      }
+    },
+    
+    "adjectival_affixes": {
+      
+      "quality_possession": {
+        "description": "Having the quality of",
+        "affixes": [
+          {
+            "affix": "ma-",
+            "language": "tagalog",
+            "examples": [
+              {"root": "ganda", "form": "maganda", "gloss": "beautiful"}
+            ]
+          }
+        ]
+      },
+      
+      "characterized_by_action": {
+        "description": "Characterized by doing the action",
+        "affixes": [
+          {
+            "affix": "mapag-",
+            "language": "tagalog",
+            "examples": [
+              {"root": "mahal", "form": "mapagmahal", "gloss": "loving (characteristic)"}
+            ]
+          }
+        ]
+      },
+      
+      "capable_of_causing": {
+        "description": "Capable of causing or related to",
+        "affixes": [
+          {
+            "affix": "maka-",
+            "language": "tagalog",
+            "examples": [
+              {"root": "Diyos", "form": "maka-Diyos", "gloss": "God-fearing, godly"}
+            ]
+          }
+        ]
+      },
+      
+      "intensive_quality": {
+        "description": "Very, extremely (intensive)",
+        "affixes": [
+          {
+            "affix": "napaka-",
+            "language": "tagalog",
+            "examples": [
+              {"root": "ganda", "form": "napakaganda", "gloss": "very beautiful"}
+            ]
+          }
+        ]
+      },
+      
+      "diminutive_quality": {
+        "description": "Somewhat, -ish quality",
+        "affixes": [
+          {
+            "affix": "-in",
+            "language": "both",
+            "examples": [
+              {"language": "cebuano", "root": "pula", "form": "pulain", "gloss": "reddish"},
+              {"language": "tagalog", "root": "pula", "form": "pulain", "gloss": "reddish"}
+            ]
+          },
+          {
+            "affix": "-in-",
+            "language": "tagalog",
+            "examples": [
+              {"root": "pula", "form": "pinula", "gloss": "reddish"}
+            ]
+          }
+        ]
+      }
+    },
+    
+    "infixes": {
+      
+      "actor_focus_infix": {
+        "affix": "-um-",
+        "position": "After first consonant or before first vowel",
+        "function": {
+          "cebuano": "Actor focus (archaic/literary only)",
+          "tagalog": "Actor focus intransitive (highly productive)"
+        },
+        "examples": [
+          {"language": "cebuano", "root": "tindog", "form": "tumindog", "gloss": "to stand (literary)"},
+          {"language": "tagalog", "root": "sulat", "form": "sumulat", "gloss": "will write"},
+          {"language": "tagalog", "root": "alis", "form": "umalis", "gloss": "will leave"}
+        ]
+      },
+      
+      "completed_perfective_infix": {
+        "affix": "-in-",
+        "position": "After first consonant",
+        "function": {
+          "cebuano": "Completed action or resultant noun",
+          "tagalog": "Completed aspect marker or adjectival"
+        },
+        "examples": [
+          {"language": "cebuano", "root": "lútù", "form": "linútù", "gloss": "cooked (completed)"},
+          {"language": "tagalog", "root": "sulat", "form": "sinulat", "gloss": "wrote"},
+          {"language": "tagalog", "root": "bili", "form": "binili", "gloss": "bought"},
+          {"language": "tagalog", "root": "kain", "form": "kinain", "gloss": "eaten (completed)"}
+        ]
+      }
+    },    
+    "reduplication": {
+      
+      "full_reduplication": {
+        "description": "Complete repetition of root",
+        "function": {
+          "cebuano": "Limited productive use - mainly plurality or intensity",
+          "tagalog": "Intensity, plurality, or ongoing action"
+        },
+        "examples": [
+          {"language": "cebuano", "pattern": "CV-", "root": "bulúng", "form": "bulubulúng", "gloss": "medicines (various)"},
+          {"language": "tagalog", "root": "takbo", "form": "takbo-takbo", "gloss": "running around"},
+          {"language": "tagalog", "root": "pula", "form": "pula-pula", "gloss": "very red"}
+        ]
+      },
+      
+      "partial_reduplication": {
+        "CV_reduplication": {
+          "description": "Reduplication of first consonant + vowel",
+          "function": {
+            "cebuano": "Limited use",
+            "tagalog": "Imperfective aspect marking (highly productive)"
+          },
+          "examples": [
+            {"language": "tagalog", "root": "bili", "form": "bibili", "gloss": "buying (ongoing/future incompleted)"},
+            {"language": "tagalog", "root": "mahal", "form": "mamahal", "gloss": "somewhat expensive"}
+          ]
+        },
+        
+        "CVC_reduplication": {
+          "description": "Reduplication of first consonant + vowel + consonant",
+          "function": "Various including plurality",
+          "examples": [
+            {"language": "tagalog", "root": "bata", "form": "bata-bata", "gloss": "children"}
+          ]
+        }
+      }
+    },    
+    "morphophonemic_rules": {
+      
+      "nasal_assimilation": {
+        "description": "Nasal consonants in prefixes assimilate to following consonants",
+        "rule": "paN-/maN-/ipang- assimilation",
+        "patterns": {
+          "before_p_b": {
+            "result": "mam-/pam-",
+            "cebuano_example": {"root": "palit", "prefix": "paN-", "result": "mamalit"},
+            "tagalog_example": {"root": "bili", "prefix": "mang-", "result": "mamili"}
+          },
+          "before_t_d_s_r_l": {
+            "result": "man-/pan-",
+            "cebuano_example": {"root": "tindug", "prefix": "paN-", "result": "manindug"},
+            "tagalog_example": {"root": "sulat", "prefix": "mang-", "result": "manulat"}
+          },
+          "before_k_h_vowel": {
+            "result": "mang-/pang-",
+            "cebuano_example": {"root": "kúhà", "prefix": "paN-", "result": "mangúhà"},
+            "tagalog_example": {"root": "hingi", "prefix": "mang-", "result": "manghingi"}
+          },
+          "before_l_cebuano": {
+            "result": "mangl- or manl-",
+            "note": "Cebuano only",
+            "example": {"root": "lútù", "prefix": "paN-", "result": "manglútù or manlútù"}
+          }
+        },
+        "consonant_hardening": {
+          "description": "Initial consonants may be replaced by nasal",
+          "patterns": {
+            "p_to_m": {"example": "paN- + palit → mamalit (not mampalit)"},
+            "t_to_n": {"example": "paN- + tindug → manindug (not mantindug)"},
+            "k_to_ng": {"example": "paN- + kúhà → mangúhà (not mangkúhà)"},
+            "s_to_n": {"example": "mang- + sulat → manulat (TAG, not mansulat)"}
+          }
+        }
+      },
+      
+      "h_insertion": {
+        "description": "Insertion of /h/ between vowels when suffix is added",
+        "language": "both",
+        "examples": [
+          {"language": "cebuano", "root": "bása", "suffix": "-un", "result": "basáhun", "gloss": "will be read"},
+          {"language": "tagalog", "root": "sulat", "suffix": "-an", "result": "sulathan", "gloss": "write to"}
+        ]
+      },
+      
+      "glottal_insertion": {
+        "description": "Insertion of glottal stop /ʔ/ when suffix is added",
+        "language": "cebuano",
+        "examples": [
+          {"root": "adtu", "suffix": "-un", "result": "adtúun", "gloss": "gone to get"},
+          {"root": "kabaláka", "suffix": "-an", "result": "kabalak-an", "gloss": "something to worry about"}
+        ]
+      },
+      
+      "vowel_dropping": {
+        "description": "Final syllable vowel drops when suffix is added to stressed final syllable",
+        "language": "cebuano",
+        "examples": [
+          {"root": "dakup", "suffix": "-an", "result": "dakpan", "gloss": "be arrested"},
+          {"root": "pisik", "suffix": "-an", "result": "piskan", "gloss": "be splashed"},
+          {"root": "lakat", "suffix": "-unun", "result": "laktunun", "gloss": "errand"}
+        ]
+      },
+      
+      "metathesis": {
+        "description": "Reversal of consonant sequences in affixed forms",
+        "language": "cebuano",
+        "patterns": {
+          "glottal_consonant": {
+            "description": "/ʔC/ and /hC/ become /Cʔ/ and /Ch/",
+            "examples": [
+              {"root": "káun", "suffix": "-a", "result": "kan-a", "gloss": "eat it"},
+              {"root": "luhud", "suffix": "-an", "result": "ludhan", "gloss": "kneel on"}
+            ]
+          },
+          "glottal_h_vowel": {
+            "description": "/ʔVh/ becomes /hVʔ/",
+            "examples": [
+              {"root": "túu", "suffix": "-an", "result": "tuhúan", "gloss": "believable"}
+            ]
+          },
+          "liquid_consonant": {
+            "description": "Liquid or /s/ + consonant metathesizes when vowel drops",
+            "examples": [
+              {"root": "ngálan", "suffix": "-an", "result": "nganlan", "gloss": "be named"},
+              {"root": "sulud", "suffix": "-un", "result": "sudlun", "gloss": "enter it"},
+              {"root": "inum", "suffix": "-a", "result": "imna", "gloss": "drink it"}
+            ]
+          }
+        }
+      },
+      
+      "liquid_alternations": {
+        "description": "Changes involving /r/, /l/, and /d/",
+        "language": "cebuano",
+        "patterns": {
+          "d_to_r_l": {
+            "description": "Intervocalic /d/ becomes /r/ or /l/",
+            "examples": [
+              {"root": "búkid", "suffix": "ka-...-an", "result": "kabukíran or kabukílan", "gloss": "mountains"}
+            ]
+          },
+          "r_l_to_d": {
+            "description": "/r/ or /l/ changes to /d/ when final or before consonant",
+            "examples": [
+              {"root": "walà", "suffix": "-un", "result": "wad-un", "gloss": "lose something"},
+              {"root": "hurut", "suffix": "-un", "result": "hutdun", "gloss": "use something up"}
+            ]
+          },
+          "d_r_l_to_g": {
+            "description": "/d/, /l/, or /r/ changes to /g/ before velar consonant",
+            "examples": [
+              {"root": "pálung", "suffix": "-an", "result": "pagngan", "gloss": "extinguish it"},
+              {"root": "haluk", "suffix": "-an", "result": "hagkan", "gloss": "kiss it"}
+            ]
+          },
+          "r_l_to_h": {
+            "description": "/r/ or /l/ at root end changes to /h/ with suffixes (Spanish loans)",
+            "examples": [
+              {"root": "mantinil", "suffix": "-an", "result": "mantinihan", "gloss": "make do with it"},
+              {"root": "imbitar", "suffix": "-un", "result": "imbitahun", "gloss": "invite him"}
+            ]
+          }
+        }
+      },
+      
+      "l_dropping": {
+        "description": "Dropping of /l/ in various positions (dialectal variation)",
+        "language": "cebuano",
+        "note": "Very regular; only /l/ forms listed in dictionary",
+        "patterns": {
+          "intervocalic_l_between_same_vowels": {
+            "description": "/l/ drops between identical vowels with compensatory lengthening",
+            "examples": [
+              {"full_form": "balay", "reduced_form": "báy", "gloss": "house"},
+              {"full_form": "kalabaw", "reduced_form": "kábaw", "gloss": "water buffalo"},
+              {"full_form": "tutulu", "reduced_form": "tutú", "gloss": "three"}
+            ]
+          },
+          "intervocalic_l_between_a_u": {
+            "description": "/l/ becomes /w/ between /a/ and /u/ or /u/ and /a/",
+            "examples": [
+              {"full_form": "lalum", "reduced_form": "lawum", "gloss": "deep"},
+              {"full_form": "sulab", "reduced_form": "suwab", "gloss": "blade"}
+            ]
+          },
+          "post_consonantal_l": {
+            "description": "Post-consonantal /l/ drops with compensatory lengthening",
+            "examples": [
+              {"full_form": "kinahanglan", "reduced_form": "kinahángan", "gloss": "need"},
+              {"full_form": "aplud", "reduced_form": "apud", "gloss": "astringent"}
+            ]
+          },
+          "final_l": {
+            "description": "Final /al/ → /aw/, final /ul/ → /u/ (Bohol, Southern Leyte)",
+            "examples": [
+              {"full_form": "bagal", "reduced_form": "bagaw", "gloss": "shell"}
+            ]
+          },
+          "l_to_y": {
+            "description": "Intervocalic /l/ becomes /y/ (scattered dialects)",
+            "examples": [
+              {"full_form": "tingáli", "reduced_form": "tingáyi", "gloss": "perhaps"}
+            ]
+          }
+        }
+      },
+      
+      "stress_shift": {
+        "description": "Stress changes in affixed forms",
+        "language": "cebuano",
+        "notation": {
+          "shift_to_final": "(→)",
+          "shift_to_penult": "(←)"
+        },
+        "general_rule": "Stress usually stays on same syllable as root",
+        "examples": [
+          {"type": "shift_to_final", "root": "káun", "affix": "nag-(→)", "result": "nagkaun", "gloss": "is eating"},
+          {"type": "shift_to_penult", "root": "sakay", "affix": "nag-(←)", "result": "nagsákay", "gloss": "ride together"}
+        ]
+      }
+    }
+  }
+}

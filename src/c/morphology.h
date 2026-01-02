@@ -7,6 +7,7 @@ typedef enum {
     LANG_UNKNOWN = 0,
     LANG_BISAYA,
     LANG_TAGALOG,
+    LANG_HILIGAYNON,
     LANG_BOTH
 } Language;
 
