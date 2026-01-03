@@ -6,7 +6,8 @@ import os
 import json
 from .loader import (
     load_bisaya_roots, 
-    load_tagalog_roots
+    load_tagalog_roots,
+    load_affix_table
 )
 
 # Language Enum Mapping
@@ -33,10 +34,10 @@ class MorphologicalAnalyzer:
     def _load_data(self):
         """Load all JSON data files"""
         # Load affix tables
-        self.prefix_table = self._load_json("prefix_table.json")
-        self.suffix_table = self._load_json("suffix_table.json")
-        self.infix_table = self._load_json("infix_table.json")
-        self.circumfix_table = self._load_json("circumfix_table.json")
+        self.prefix_table = load_affix_table(os.path.join(self.data_dir, "prefix_table.json"))
+        self.suffix_table = load_affix_table(os.path.join(self.data_dir, "suffix_table.json"))
+        self.infix_table = load_affix_table(os.path.join(self.data_dir, "infix_table.json"))
+        self.circumfix_table = load_affix_table(os.path.join(self.data_dir, "circumfix_table.json"))
         
         # Load root dictionaries (new format)
         self.bisaya_roots = load_bisaya_roots(
@@ -55,14 +56,6 @@ class MorphologicalAnalyzer:
         print(f"Loaded {len(self.circumfix_table)} circumfixes")
         print(f"Loaded {len(self.bisaya_roots)} Bisaya roots")
         print(f"Loaded {len(self.tagalog_roots)} Tagalog roots")
-        
-    def _load_json(self, filename):
-        """Load a JSON file from data directory"""
-        filepath = os.path.join(self.data_dir, filename)
-        if os.path.exists(filepath):
-            with open(filepath, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        return {}
     
     def _build_affix_sets(self):
         """Build sorted affix lists for matching (longest first)"""
@@ -391,19 +384,6 @@ class MorphologicalAnalyzer:
                     if len(results) >= limit:
                         break
         
-        # Search shared vocab
-        if language in (None, "Both") and len(results) < limit:
-            for word, info in self.shared_vocab.items():
-                if word.startswith(query_lower):
-                    results.append({
-                        "word": word,
-                        "definition": info.get("meaning", ""),
-                        "pos": info.get("pos"),
-                        "language": info.get("origin", "Both"),
-                        "source": "Shared"
-                    })
-                    if len(results) >= limit:
-                        break
         
         return results
     
