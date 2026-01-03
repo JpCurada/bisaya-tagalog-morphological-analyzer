@@ -1,0 +1,40 @@
+{
+    "-um-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Basic",
+            "tense": "Future",
+            "function": "will [verb] (intransitive)",
+            "rules": "CEB: archaic/literary; TAG: highly productive",
+            "example": {
+                "root_ceb": "tindog",
+                "form_ceb": "tumindog",
+                "gloss_ceb": "will stand (literary)",
+                "root_tag": "sulat",
+                "form_tag": "sumulat",
+                "gloss_tag": "will write"
+            }
+        }
+    ],
+    "-in-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Object",
+            "aspect": "Completed",
+            "tense": "Past",
+            "function": "[verb]-ed (completed)",
+            "rules": "Shared completed aspect marker",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "linútù",
+                "gloss_ceb": "was cooked",
+                "root_tag": "bili",
+                "form_tag": "binili",
+                "gloss_tag": "was bought"
+            }
+        }
+    ]
+}
