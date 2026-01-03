@@ -4,8 +4,8 @@ const OCR_CONFIG = {
     apiUrl: 'https://api.ocr.space/parse/image',
     timeout: 30000,
     maxRetries: 2,
-    imageQuality: 0.60,
-    maxImageSize: 1000 // Reduced to 1000 for max speed
+    imageQuality: 0.90,
+    maxImageSize: 1500 // Increased for better resolution
 };
 
 // Preprocess image for better OCR accuracy and smaller size
@@ -54,17 +54,16 @@ async function performOCRWithAPI(imageDataUrl) {
 
     // Convert data URL to blob
     const base64Data = imageDataUrl.split(',')[1];
-    // Detect format or default to jpeg if we just compressed it
     const isJpeg = imageDataUrl.startsWith('data:image/jpeg');
     const mimeType = isJpeg ? 'image/jpeg' : 'image/png';
 
     formData.append('base64Image', `data:${mimeType};base64,${base64Data}`);
     formData.append('apikey', OCR_CONFIG.apiKey);
-    formData.append('language', 'eng');
+    formData.append('language', 'eng'); // Use English (supports Latin characters)
     formData.append('isOverlayRequired', 'false');
     formData.append('detectOrientation', 'true');
     formData.append('scale', 'true');
-    formData.append('OCREngine', '1'); // Engine 1 is faster (Legacy)
+    formData.append('OCREngine', '2'); // Engine 2 is much better for text on backgrounds
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), OCR_CONFIG.timeout);

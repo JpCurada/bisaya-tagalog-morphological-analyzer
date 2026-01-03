@@ -1,48 +1,57 @@
 import json
 import os
 
-def format_value(entry, default_lang=None):
-    """
-    Convert dictionary entry to pipe-delimited string: "Language|POS|Extra"
-    """
-    lang = entry.get("language", default_lang)
-    pos = entry.get("compatible_pos") or entry.get("pos")
-    
-    # Handle list of POS
-    if isinstance(pos, list):
-        pos_str = ",".join(pos)
-    else:
-        pos_str = str(pos)
-        
-    extra = entry.get("function") or entry.get("meaning") or ""
-    
-    return f"{lang}|{pos_str}|{extra}"
+def load_json_file(filepath):
+    """Generic helper to load a JSON file safely"""
+    try:
+        if os.path.exists(filepath):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return {}
+    except Exception as e:
+        print(f"Warning: Failed to load {filepath}: {e}")
+        return {}
 
-def load_json_as_string(filepath, default_lang=None):
-    """
-    Load JSON and convert to "key|value\nkey2|value2" string
-    """
-    if not os.path.exists(filepath):
-        raise FileNotFoundError(f"Lexicon file not found: {filepath}")
-        
-    with open(filepath, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-        
-    lines = []
-    for key, entry in data.items():
-        val = format_value(entry, default_lang)
-        lines.append(f"{key}|{val}")
-        
-    return "\n".join(lines)
+def load_affix_table(filepath):
+    """Load an affix table JSON file (prefix, suffix, infix, circumfix)"""
+    return load_json_file(filepath)
 
-def load_data(data_dir):
-    """
-    Load all 5 lexicon files and return raw strings
-    """
-    return {
-        "prefix": load_json_as_string(os.path.join(data_dir, "prefix_table.json")),
-        "suffix": load_json_as_string(os.path.join(data_dir, "suffix_table.json")),
-        "bisaya": load_json_as_string(os.path.join(data_dir, "bisaya_roots.json"), "Bisaya"),
-        "tagalog": load_json_as_string(os.path.join(data_dir, "tagalog_roots.json"), "Tagalog"),
-        "shared": load_json_as_string(os.path.join(data_dir, "shared_vocab.json"), "Both")
-    }
+def load_bisaya_roots(filepath):
+    """Load bisaya roots as a dictionary keyed by word"""
+    data = load_json_file(filepath)
+    if not data:
+        return {}
+        
+    result = {}
+    for item in data:
+        word = item.get("word", "")
+        if word:
+            result[word.lower()] = {
+                "word": word,
+                "definition": item.get("definition", ""),
+                "language": item.get("language", "Hiligaynon"),
+                "pos": item.get("part_of_speech"),
+                "link": item.get("link", "")
+            }
+    return result
+
+def load_tagalog_roots(filepath):
+    """Load tagalog roots as a dictionary keyed by word"""
+    data = load_json_file(filepath)
+    if not data:
+        return {}
+    
+    result = {}
+    for item in data:
+        word = item.get("word", "")
+        if word:
+            result[word.lower()] = {
+                "word": word,
+                "definition": item.get("definition", ""),
+                "language": item.get("language", "Tagalog"),
+                "pos": item.get("part_of_speech"),
+                "link": item.get("link", "")
+            }
+    return result
+
+

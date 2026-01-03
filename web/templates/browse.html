@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse Bistag's comprehensive affix tables and root dictionaries">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <title>Browse Data - Bistag</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/browse.css') }}">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="/" class="logo">
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M4 7h16M4 12h16M4 17h10" />
+                </svg>
+                <span class="logo-text">Bistag</span>
+            </a>
+            <div class="nav-links">
+                <a href="/analyzer" class="btn btn-accent btn-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                    Analyzer
+                </a>
+                <a href="/" class="btn btn-ghost btn-sm">Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="browse-container">
+        <!-- Header -->
+        <header class="browse-header">
+            <h1>Data Browser</h1>
+            <p class="subtitle">Explore affix tables and root dictionaries</p>
+
+            <!-- Stats Overview -->
+            <div class="stats-overview" id="statsOverview">
+                <div class="stat-pill">
+                    <span class="stat-num" id="totalAffixes">-</span>
+                    <span class="stat-text">Affixes</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-num" id="totalRoots">-</span>
+                    <span class="stat-text">Root Words</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="affixes" onclick="switchTab('affixes')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                    <path d="M2 12l10 5 10-5" />
+                </svg>
+                Affixes
+            </button>
+            <button class="tab-btn" data-tab="roots" onclick="switchTab('roots')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+                Root Words
+            </button>
+        </div>
+
+        <!-- Affixes Tab -->
+        <div id="affixesTab" class="tab-content active">
+            <!-- Affix Type Selector -->
+            <div class="filter-bar glass-panel">
+                <div class="filter-group">
+                    <label>Affix Type:</label>
+                    <div class="btn-group">
+                        <button class="filter-btn active" data-affix="prefixes" onclick="loadAffixes('prefixes')">
+                            Prefixes
+                        </button>
+                        <button class="filter-btn" data-affix="suffixes" onclick="loadAffixes('suffixes')">
+                            Suffixes
+                        </button>
+                        <button class="filter-btn" data-affix="infixes" onclick="loadAffixes('infixes')">
+                            Infixes
+                        </button>
+                        <button class="filter-btn" data-affix="circumfixes" onclick="loadAffixes('circumfixes')">
+                            Circumfixes
+                        </button>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                    <input type="text" id="affixSearch" placeholder="Search affixes..." oninput="filterAffixes()">
+                </div>
+            </div>
+
+            <!-- Affix Results -->
+            <div class="affix-count">
+                <span id="affixCount">Loading...</span>
+            </div>
+            <div id="affixGrid" class="affix-grid">
+                <!-- Affix cards will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Roots Tab -->
+        <div id="rootsTab" class="tab-content">
+            <!-- Root Search/Filter -->
+            <div class="filter-bar glass-panel">
+                <div class="filter-group">
+                    <label>Language:</label>
+                    <div class="btn-group">
+                        <button class="filter-btn active" data-lang="all" onclick="setRootLanguage('all')">
+                            All
+                        </button>
+                        <button class="filter-btn" data-lang="Bisaya" onclick="setRootLanguage('Bisaya')">
+                            Bisaya
+                        </button>
+                        <button class="filter-btn" data-lang="Tagalog" onclick="setRootLanguage('Tagalog')">
+                            Tagalog
+                        </button>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                    <input type="text" id="rootSearch" placeholder="Search roots..." oninput="searchRoots()">
+                </div>
+            </div>
+
+            <!-- Root Results -->
+            <div class="root-info">
+                <span id="rootInfo">Enter a search term to find roots</span>
+            </div>
+            <div id="rootGrid" class="root-grid">
+                <!-- Root cards will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Detail Modal -->
+        <div id="detailModal" class="modal hidden">
+            <div class="modal-backdrop" onclick="closeModal()"></div>
+            <div class="modal-content glass-panel">
+                <button class="modal-close" onclick="closeModal()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+                <div id="modalBody">
+                    <!-- Modal content loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M4 7h16M4 12h16M4 17h10" />
+                    </svg>
+                    <span class="logo-text">Bistag</span>
+                </div>
+                <p class="footer-tagline">Philippine Language Morphology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/browse.js') }}" defer></script>
+</body>
+
+</html>

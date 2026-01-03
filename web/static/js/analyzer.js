@@ -1,259 +1,312 @@
 /**
- * Bistag Analyzer - Main Application Logic
- * Handles morphological analysis and visualization
+ * Analyzer Page JavaScript
+ * Handles text analysis with comprehensive morphological breakdown
  */
 
-// State Management
-const AnalyzerState = {
-    currentResults: null,
-    isAnalyzing: false
-};
+// =====================================================
+// Initialization
+// =====================================================
 
-// UI Elements (cached for performance)
-const UI = {
-    inputText: null,
-    loading: null,
-    resultsSection: null,
-    statTotal: null,
-    statSwitches: null,
-    statValid: null,
-    flowVis: null,
-    cardsContainer: null,
+document.addEventListener('DOMContentLoaded', () => {
+    loadQuickStats();
 
-    init() {
-        this.inputText = DOM.qs('#inputText');
-        this.loading = DOM.qs('#loading');
-        this.resultsSection = DOM.qs('#resultsSection');
-        this.statTotal = DOM.qs('#statTotal');
-        this.statSwitches = DOM.qs('#statSwitches');
-        this.statValid = DOM.qs('#statValid');
-        this.flowVis = DOM.qs('#flowVis');
-        this.cardsContainer = DOM.qs('#cardsContainer');
+    // Add keyboard shortcut
+    document.getElementById('inputText').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && e.ctrlKey) {
+            analyzeText();
+        }
+    });
+});
+
+// =====================================================
+// Quick Stats Loading
+// =====================================================
+
+async function loadQuickStats() {
+    try {
+        const response = await fetch('/api/stats');
+        const stats = await response.json();
+
+        document.getElementById('qsPrefixes').textContent = stats.prefixes;
+        document.getElementById('qsSuffixes').textContent = stats.suffixes;
+        document.getElementById('qsRoots').textContent = formatNumber(stats.total_roots);
+    } catch (error) {
+        console.log('Stats loading skipped');
     }
-};
+}
 
-// Main Analysis Function
+function formatNumber(num) {
+    if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'k';
+    }
+    return num.toString();
+}
+
+// =====================================================
+// Analysis Functions
+// =====================================================
+
 async function analyzeText() {
-    const text = UI.inputText.value.trim();
-
-    if (!text) {
-        Toast.error('Please enter some text to analyze.');
+    const text = document.getElementById('inputText').value;
+    if (!text.trim()) {
+        showToast('Please enter some text to analyze.', 'error');
         return;
     }
 
-    if (AnalyzerState.isAnalyzing) return;
+    const loadSpan = document.getElementById('loading');
+    const resultSec = document.getElementById('resultsSection');
 
-    AnalyzerState.isAnalyzing = true;
-    UI.loading.classList.remove('hidden');
-    UI.resultsSection.classList.add('hidden');
-    DOM.scrollTo(UI.loading, { block: 'center' });
+    loadSpan.classList.remove('hidden');
+    resultSec.classList.add('hidden');
+
+    loadSpan.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     try {
-        const data = await API.analyze(text);
+        const response = await fetch('/api/analyze', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+        });
+
+        const data = await response.json();
 
         // Small delay for UX
-        await new Promise(resolve => setTimeout(resolve, 600));
+        await new Promise(r => setTimeout(r, 400));
 
-        AnalyzerState.currentResults = data;
         renderResults(data);
+        loadSpan.classList.add('hidden');
+        resultSec.classList.remove('hidden');
 
-        UI.loading.classList.add('hidden');
-        UI.resultsSection.classList.remove('hidden');
-        DOM.scrollTo(UI.resultsSection);
+        resultSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch (error) {
-        Toast.error('An error occurred during analysis.');
-        console.error('Analysis error:', error);
-    } finally {
-        AnalyzerState.isAnalyzing = false;
-        UI.loading.classList.add('hidden');
+        console.error('Error:', error);
+        showToast('An error occurred during analysis.', 'error');
+        loadSpan.classList.add('hidden');
     }
 }
 
-// Clear Input
 function clearText() {
-    UI.inputText.value = '';
-    UI.resultsSection.classList.add('hidden');
-    UI.inputText.focus();
+    document.getElementById('inputText').value = '';
+    document.getElementById('resultsSection').classList.add('hidden');
+    document.getElementById('inputText').focus();
 }
 
-// Render Results
+// =====================================================
+// Rendering
+// =====================================================
+
 function renderResults(data) {
-    renderStats(data.stats);
-    renderLanguageFlow(data.results);
-    renderMorphologicalCards(data.results);
-}
+    // Update stats
+    animateValue(document.getElementById('statTotal'), 0, data.stats.total_words, 800);
 
-// Render Statistics
-function renderStats(stats) {
-    DOM.animateValue(UI.statTotal, 0, stats.total_words, 1000);
-    DOM.animateValue(UI.statSwitches, 0, stats.switch_count, 1000);
-
-    const validPerc = stats.total_words > 0
-        ? Math.round((stats.valid_words / stats.total_words) * 100)
+    const validPerc = data.stats.total_words > 0
+        ? Math.round((data.stats.valid_words / data.stats.total_words) * 100)
         : 0;
-    UI.statValid.textContent = validPerc + '%';
+    document.getElementById('statValid').textContent = validPerc + '%';
+
+    animateValue(document.getElementById('statSwitches'), 0, data.stats.switch_count, 800);
+
+    // Update result count
+    document.getElementById('resultCount').textContent =
+        `${data.results.length} word${data.results.length !== 1 ? 's' : ''}`;
+
+    // Render flow visualization
+    renderFlowVisualization(data.results);
+
+    // Render cards
+    renderCards(data.results);
 }
 
-// Render Language Flow
-function renderLanguageFlow(results) {
-    UI.flowVis.innerHTML = '';
+function renderFlowVisualization(results) {
+    const flowContainer = document.getElementById('flowVis');
+    flowContainer.innerHTML = '';
 
     results.forEach(res => {
-        // Create separate bubbles for prefix, root, and suffix
-        if (res.prefix) {
-            const prefixSpan = createFlowItem(res.prefix, 'prefix', res.language, 'Prefix from prefix_table.json');
-            UI.flowVis.appendChild(prefixSpan);
+        // Create flow item with structure
+        const flowItem = document.createElement('div');
+        flowItem.className = `flow-item tag-${res.language}`;
+
+        let components = [];
+
+        // Add prefixes
+        if (res.prefixes && res.prefixes.length > 0) {
+            res.prefixes.forEach(p => {
+                components.push(`<span class="flow-comp prefix">${p}-</span>`);
+            });
         }
 
+        // Add root
         if (res.root) {
-            const source = getSourceFile(res.language);
-            const rootSpan = createFlowItem(res.root, 'root', res.language, `Root from ${source}`);
-            UI.flowVis.appendChild(rootSpan);
-        } else {
-            const unknownSpan = createFlowItem(
-                res.original_token || res.word,
-                'root',
-                'Unknown',
-                'Unrecognized word'
-            );
-            UI.flowVis.appendChild(unknownSpan);
+            components.push(`<span class="flow-comp root">${res.root}</span>`);
+        } else if (!res.valid) {
+            components.push(`<span class="flow-comp unknown">${res.word}</span>`);
         }
 
-        if (res.suffix) {
-            const suffixSpan = createFlowItem(res.suffix, 'suffix', res.language, 'Suffix from suffix_table.json');
-            UI.flowVis.appendChild(suffixSpan);
+        // Add suffixes
+        if (res.suffixes && res.suffixes.length > 0) {
+            res.suffixes.forEach(s => {
+                components.push(`<span class="flow-comp suffix">-${s}</span>`);
+            });
         }
+
+        flowItem.innerHTML = components.join('');
+
+        // Add tooltip with first definition
+        let tooltipText = res.language;
+        if (res.definitions && res.definitions.length > 0) {
+            const firstDef = res.definitions[0].definition || '';
+            tooltipText += ': ' + firstDef.substring(0, 50) + (firstDef.length > 50 ? '...' : '');
+            if (res.definitions.length > 1) {
+                tooltipText += ` (+${res.definitions.length - 1} more)`;
+            }
+        }
+        flowItem.title = tooltipText;
+
+        flowContainer.appendChild(flowItem);
     });
 }
 
-// Create Flow Item
-function createFlowItem(text, type, language, title) {
-    const span = DOM.create('span', {
-        className: `flow-item tag-${language}`,
-        title: title
-    });
-
-    const comp = DOM.create('span', {
-        className: `flow-comp ${type}`
-    }, [text]);
-
-    span.appendChild(comp);
-    return span;
-}
-
-// Get Source File Name
-function getSourceFile(language) {
-    const sourceMap = {
-        'Bisaya': 'bisaya_roots.json',
-        'Tagalog': 'tagalog_roots.json',
-        'Shared': 'shared_vocab.json'
-    };
-    return sourceMap[language] || 'shared_vocab.json';
-}
-
-// Render Morphological Cards
-function renderMorphologicalCards(results) {
-    UI.cardsContainer.innerHTML = '';
+function renderCards(results) {
+    const cardsContainer = document.getElementById('cardsContainer');
+    cardsContainer.innerHTML = '';
 
     results.forEach((res, index) => {
         const card = createMorphCard(res, index);
-        UI.cardsContainer.appendChild(card);
+        cardsContainer.appendChild(card);
     });
 }
 
-// Create Morphological Card
 function createMorphCard(res, index) {
-    const card = DOM.create('div', {
-        className: `morph-card ${res.valid ? 'valid' : 'invalid'}`,
-        style: `animation-delay: ${index * 0.1}s`
-    });
+    const card = document.createElement('div');
+    card.className = `morph-card ${res.valid ? 'valid' : 'invalid'} tag-${res.language}`;
+    card.style.animationDelay = `${index * 0.08}s`;
 
-    const langClass = `tag-${res.language}`;
+    // Build structure display
+    let structureHtml = '';
 
-    // Build composition HTML
-    const components = [];
-    if (res.prefix) components.push(`<span class="comp-prefix" title="Prefix">${res.prefix}</span>`);
-    if (res.root) components.push(`<span class="comp-root" title="Root">${res.root}</span>`);
-    if (res.suffix) components.push(`<span class="comp-suffix" title="Suffix">${res.suffix}</span>`);
-
-    const componentsHtml = components.length > 0
-        ? components.join(' <span class="comp-sep">+</span> ')
-        : '<span class="comp-unknown">Unrecognized structure</span>';
-
-    // Build info rows
-    const infoRows = [];
-
-    infoRows.push(`
-        <div class="detail-row">
-            <span class="label">Composition</span>
-            <span class="value">${componentsHtml}</span>
-        </div>
-    `);
-
-    if (res.meaning) {
-        infoRows.push(`
-            <div class="detail-row">
-                <span class="label">Meaning</span>
-                <span class="value meaning">${res.meaning}</span>
-            </div>
-        `);
+    // Prefixes
+    if (res.prefixes && res.prefixes.length > 0) {
+        res.prefixes.forEach(p => {
+            structureHtml += `<span class="comp-prefix" title="Prefix">${p}-</span>`;
+            structureHtml += `<span class="comp-sep">+</span>`;
+        });
     }
 
-    if (res.pos) {
-        infoRows.push(`
-            <div class="detail-row">
-                <span class="label">Part of Speech</span>
-                <span class="value pos">${res.pos}</span>
-            </div>
-        `);
+    // Root
+    if (res.root) {
+        structureHtml += `<span class="comp-root" title="Root">${res.root}</span>`;
+    } else {
+        structureHtml += `<span class="comp-unknown">${res.word}</span>`;
     }
 
-    if (res.origin) {
-        infoRows.push(`
+    // Suffixes
+    if (res.suffixes && res.suffixes.length > 0) {
+        res.suffixes.forEach(s => {
+            structureHtml += `<span class="comp-sep">+</span>`;
+            structureHtml += `<span class="comp-suffix" title="Suffix">-${s}</span>`;
+        });
+    }
+
+    // Build affix functions section
+    let affixFunctionsHtml = '';
+    if (res.affix_functions && res.affix_functions.length > 0) {
+        affixFunctionsHtml = `
             <div class="detail-row">
-                <span class="label">Origin</span>
-                <span class="value origin">${res.origin}</span>
+                <span class="label">Affix Functions</span>
+                <div class="affix-functions">
+                    ${res.affix_functions.map(af => `
+                        <div class="affix-fn">
+                            <span class="affix-fn-key">${af.affix}</span>
+                            <span class="affix-fn-val">${truncate(af.function, 60)}</span>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
-        `);
+        `;
+    }
+
+    // Build definitions section (now shows ALL dictionary entries)
+    let definitionsHtml = '';
+    if (res.definitions && res.definitions.length > 0) {
+        definitionsHtml = `
+            <div class="detail-row">
+                <span class="label">Definitions</span>
+                <div class="definitions-list">
+                    ${res.definitions.map(def => `
+                        <div class="definition-entry">
+                            <span class="def-lang-badge ${def.language.toLowerCase()}">${def.language}</span>
+                            <div class="def-content">
+                                <span class="def-text">${truncate(def.definition, 150)}</span>
+                                ${def.pos ? `<span class="def-pos">${def.pos}</span>` : ''}
+                                ${def.link ? `<a href="${def.link}" target="_blank" class="def-link" title="View source">↗</a>` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
     }
 
     card.innerHTML = `
         <div class="word-header">
             <span class="word-text">${res.word}</span>
-            <span class="lang-badge ${langClass}">${res.language}</span>
+            <span class="lang-badge">${res.language}</span>
         </div>
         <div class="morph-details">
-            ${infoRows.join('')}
+            <div class="detail-row">
+                <span class="label">Structure</span>
+                <div class="structure-display">${structureHtml}</div>
+            </div>
+            ${definitionsHtml}
+            ${affixFunctionsHtml}
         </div>
     `;
 
     return card;
 }
 
-// Initialize Application
-function initAnalyzer() {
-    UI.init();
+// =====================================================
+// Utility Functions
+// =====================================================
 
-    // Add keyboard shortcut (Ctrl+Enter to analyze)
-    UI.inputText.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && e.ctrlKey) {
-            analyzeText();
-        }
-    });
-
-    // Add input validation
-    UI.inputText.addEventListener('input', debounce(() => {
-        const text = UI.inputText.value.trim();
-        if (text.length > 1000) {
-            Toast.show('Text is quite long. Analysis may take a moment.', 'info');
-        }
-    }, 500));
+function truncate(str, maxLen) {
+    if (!str) return '';
+    if (str.length <= maxLen) return str;
+    return str.substring(0, maxLen) + '...';
 }
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAnalyzer);
-} else {
-    initAnalyzer();
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    // Animate in
+    requestAnimationFrame(() => {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translateX(0)';
+    });
+
+    // Auto remove
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => toast.remove(), 300);
+    }, 4000);
 }

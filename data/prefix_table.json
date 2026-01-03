@@ -1,130 +1,1101 @@
 {
-  "nag-": {
-    "language": "Both",
-    "function": "actor_focus_completed",
-    "compatible_pos": [
-      "verb",
-      "noun",
-      "adjective"
+    "mu-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Punctual",
+            "tense": "Future",
+            "function": "will [verb] (single action)",
+            "rules": "Cebuano only; single completed action",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "mupalit",
+                "gloss_ceb": "will buy"
+            }
+        }
+    ],
+    "mag-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Punctual/Durative",
+            "tense": "Future",
+            "function": "CEB: will be [verb]-ing; TAG: will [verb]",
+            "rules": "Different aspect usage; appears in multiple contexts",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "magpalit",
+                "gloss_ceb": "will be buying",
+                "root_tag": "bili",
+                "form_tag": "magbili",
+                "gloss_tag": "will buy"
+            }
+        }
+    ],
+    "mam-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (before p/b)",
+            "rules": "Allomorph of maN-; before p, b",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "mamalit",
+                "gloss_ceb": "will buy habitually",
+                "root_tag": "bili",
+                "form_tag": "mamili",
+                "gloss_tag": "will buy habitually"
+            }
+        }
+    ],
+    "man-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (before t/d/s/r/l)",
+            "rules": "Allomorph of maN-; before t, d, s, r, l",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "tindug",
+                "form_ceb": "manindug",
+                "gloss_ceb": "will stand habitually",
+                "root_tag": "sulat",
+                "form_tag": "manulat",
+                "gloss_tag": "will write habitually"
+            }
+        }
+    ],
+    "mang-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (before k/h/vowels)",
+            "rules": "Allomorph of maN-; before k, h, vowels",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "isda",
+                "form_ceb": "mamingka",
+                "gloss_ceb": "will go fishing",
+                "root_tag": "isda",
+                "form_tag": "mangisda",
+                "gloss_tag": "will go fishing"
+            }
+        }
+    ],
+    "mangl-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (before l)",
+            "rules": "Cebuano only; allomorph of maN- before l",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "manglútù",
+                "gloss_ceb": "will cook habitually"
+            }
+        }
+    ],
+    "manl-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (before l variant)",
+            "rules": "Cebuano only; variant of mangl-",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "manlútù",
+                "gloss_ceb": "will cook habitually"
+            }
+        }
+    ],
+    "many-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (variant)",
+            "rules": "Tagalog only; allomorph of maN-",
+            "allomorphs": "Part of paN-/maN- system"
+        }
+    ],
+    "ma-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Future",
+            "function": "will [verb] habitually (before consonants)",
+            "rules": "Tagalog only; allomorph of maN-",
+            "allomorphs": "Part of paN-/maN- system"
+        },
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Passive",
+            "aspect": "Potential",
+            "tense": "Future",
+            "function": "can be [verb]-ed; become [adj]; [adj]",
+            "rules": "Multiple functions; potential passive, stative, adjectival",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "mapalit",
+                "gloss_ceb": "can be bought",
+                "root_tag": "bili",
+                "form_tag": "mabili",
+                "gloss_tag": "can be bought"
+            }
+        }
+    ],
+    "mi-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Punctual",
+            "tense": "Past",
+            "function": "[verb]-ed (single action)",
+            "rules": "Cebuano only",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "mipalit",
+                "gloss_ceb": "bought"
+            }
+        }
+    ],
+    "ni-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Punctual",
+            "tense": "Past",
+            "function": "[verb]-ed (alternative)",
+            "rules": "Cebuano only; alternative to mi-",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "nipalit",
+                "gloss_ceb": "bought"
+            }
+        }
+    ],
+    "nag-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Durative/Completed",
+            "tense": "Past",
+            "function": "CEB: was [verb]-ing; TAG: [verb]-ed",
+            "rules": "Different aspect usage",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "nagpalit",
+                "gloss_ceb": "was buying",
+                "root_tag": "bili",
+                "form_tag": "nagbili",
+                "gloss_tag": "bought"
+            }
+        }
+    ],
+    "nam-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (before p/b)",
+            "rules": "Past allomorph of maN-; before p, b",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "namalit",
+                "gloss_ceb": "bought habitually",
+                "root_tag": "bili",
+                "form_tag": "namili",
+                "gloss_tag": "bought habitually"
+            }
+        }
+    ],
+    "nan-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (before t/d/s/r/l)",
+            "rules": "Past allomorph of maN-; before t, d, s, r, l",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "tindug",
+                "form_ceb": "nanindug",
+                "gloss_ceb": "stood habitually",
+                "root_tag": "sulat",
+                "form_tag": "nanulat",
+                "gloss_tag": "wrote habitually"
+            }
+        }
+    ],
+    "nang-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (before k/h/vowels)",
+            "rules": "Past allomorph of maN-; before k, h, vowels",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "isda",
+                "form_ceb": "namingka",
+                "gloss_ceb": "went fishing",
+                "root_tag": "isda",
+                "form_tag": "nangisda",
+                "gloss_tag": "went fishing"
+            }
+        }
+    ],
+    "nangl-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (before l)",
+            "rules": "Cebuano only; past allomorph before l",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "nanglútù",
+                "gloss_ceb": "cooked habitually"
+            }
+        }
+    ],
+    "nanl-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (before l variant)",
+            "rules": "Cebuano only; variant of nangl-",
+            "allomorphs": "Part of paN-/maN- system",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "nanlútù",
+                "gloss_ceb": "cooked habitually"
+            }
+        }
+    ],
+    "nany-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (variant)",
+            "rules": "Tagalog only; past allomorph",
+            "allomorphs": "Part of paN-/maN- system"
+        }
+    ],
+    "na-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "aspect": "Distributive",
+            "tense": "Past",
+            "function": "[verb]-ed habitually (before consonants)",
+            "rules": "Tagalog only; past allomorph",
+            "allomorphs": "Part of paN-/maN- system"
+        },
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Passive",
+            "aspect": "Potential",
+            "tense": "Past",
+            "function": "was able to be [verb]-ed",
+            "rules": "Shared past potential passive",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "napalit",
+                "gloss_ceb": "was able to be bought",
+                "root_tag": "bili",
+                "form_tag": "nabili",
+                "gloss_tag": "was able to be bought"
+            }
+        }
+    ],
+    "maga-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Durative",
+            "tense": "Future",
+            "function": "will be [verb]-ing",
+            "rules": "Cebuano durative variant",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "magapalit",
+                "gloss_ceb": "will be buying"
+            }
+        }
+    ],
+    "naga-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Durative",
+            "tense": "Past",
+            "function": "was [verb]-ing",
+            "rules": "Cebuano durative variant",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "nagapalit",
+                "gloss_ceb": "was buying"
+            }
+        }
+    ],
+    "ga-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Actor",
+            "aspect": "Durative",
+            "tense": "Past",
+            "function": "was [verb]-ing (short form)",
+            "rules": "Cebuano durative short form",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "gapalit",
+                "gloss_ceb": "was buying"
+            }
+        }
+    ],
+    "maka-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Potential",
+            "tense": "Future",
+            "function": "can/able to [verb]",
+            "rules": "Shared ability marker",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "makapalit",
+                "gloss_ceb": "can buy",
+                "root_tag": "bili",
+                "form_tag": "makabili",
+                "gloss_tag": "can buy"
+            }
+        },
+        {
+            "type": "Adjectival",
+            "language": "Tagalog",
+            "function": "capable of causing; related to",
+            "rules": "God-fearing/godly",
+            "allomorphs": "Tagalog only; capability adjective",
+            "example": {
+                "form_tag": "Diyos",
+                "gloss_tag": "maka-Diyos"
+            }
+        }
+    ],
+    "ka-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Potential",
+            "tense": "Future",
+            "function": "can [verb] (short form)",
+            "rules": "Short form of maka-/naka-; multiple functions",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "kapalit",
+                "gloss_ceb": "can buy",
+                "root_tag": "bili",
+                "form_tag": "kabili",
+                "gloss_tag": "can buy"
+            }
+        }
+    ],
+    "makapag-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "aspect": "Potential",
+            "tense": "Future",
+            "function": "can [verb] (with mag- verbs)",
+            "rules": "able to work",
+            "allomorphs": "Tagalog only; combines with mag- verbs",
+            "example": {
+                "form_tag": "trabaho",
+                "gloss_tag": "makapag-trabaho"
+            }
+        }
+    ],
+    "makapang-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "aspect": "Potential",
+            "tense": "Future",
+            "function": "can [verb] (with mang- verbs)",
+            "rules": "able to go fishing",
+            "allomorphs": "Tagalog only; combines with mang- verbs",
+            "example": {
+                "form_tag": "isda",
+                "gloss_tag": "makapang-isda"
+            }
+        }
+    ],
+    "naka-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Actor",
+            "aspect": "Potential",
+            "tense": "Past",
+            "function": "was able to [verb]",
+            "rules": "Shared past ability marker",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "nakapalit",
+                "gloss_ceb": "was able to buy",
+                "root_tag": "bili",
+                "form_tag": "nakabili",
+                "gloss_tag": "was able to buy"
+            }
+        }
+    ],
+    "gi-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Direct Passive",
+            "aspect": "Punctual",
+            "tense": "Past",
+            "function": "was [verb]-ed",
+            "rules": "Cebuano only; main past passive marker",
+            "example": {
+                "root_ceb": "palit",
+                "form_ceb": "gipalit",
+                "gloss_ceb": "was bought"
+            }
+        }
+    ],
+    "gina-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Direct Passive",
+            "aspect": "Durative",
+            "tense": "Past",
+            "function": "was being [verb]-ed",
+            "rules": "Cebuano only; literary/dialectal",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "ginalútù",
+                "gloss_ceb": "was being cooked"
+            }
+        }
+    ],
+    "i-": [
+        {
+            "type": "Inflectional",
+            "language": "Both",
+            "focus": "Instrumental/Benefactive",
+            "aspect": "Punctual",
+            "tense": "Future",
+            "function": "will [verb] (it/for someone)",
+            "rules": "Shared instrumental/benefactive marker",
+            "example": {
+                "root_ceb": "dala",
+                "form_ceb": "idala",
+                "gloss_ceb": "will bring",
+                "root_tag": "bigay",
+                "form_tag": "ibigay",
+                "gloss_tag": "will give"
+            }
+        }
+    ],
+    "ipag-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Benefactive",
+            "aspect": "Basic",
+            "tense": "Future",
+            "function": "will [verb] for (someone)",
+            "rules": "will cook for",
+            "allomorphs": "Tagalog only; benefactive focus",
+            "example": {
+                "form_tag": "luto",
+                "gloss_tag": "ipagluto"
+            }
+        }
+    ],
+    "iga-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Instrumental",
+            "aspect": "Durative",
+            "tense": "Future",
+            "function": "will be [verb]-ing (it)",
+            "rules": "Cebuano only; literary/dialectal",
+            "example": {
+                "root_ceb": "dala",
+                "form_ceb": "igadala",
+                "gloss_ceb": "will be bringing"
+            }
+        }
+    ],
+    "ika-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Instrumental",
+            "aspect": "Potential",
+            "tense": "Future",
+            "function": "can be [verb]-ed (reason-based)",
+            "rules": "Cebuano only; reason/causation",
+            "example": {
+                "root_ceb": "dala",
+                "form_ceb": "ikadala",
+                "gloss_ceb": "can bring (because of)"
+            }
+        }
+    ],
+    "gika-": [
+        {
+            "type": "Inflectional",
+            "language": "Cebuano",
+            "focus": "Instrumental",
+            "aspect": "Potential",
+            "tense": "Past",
+            "function": "was [verb]-ed (reason)",
+            "rules": "Cebuano only; past reason",
+            "example": {
+                "root_ceb": "dala",
+                "form_ceb": "gikadala",
+                "gloss_ceb": "was brought (because of)"
+            }
+        }
+    ],
+    "ipam-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Instrumental",
+            "aspect": "Basic",
+            "tense": "Future",
+            "function": "will use to [verb] (before p/b)",
+            "rules": "will use to buy",
+            "allomorphs": "Tagalog only; allomorph before p, b",
+            "example": {
+                "form_tag": "bili",
+                "gloss_tag": "ipambili"
+            }
+        }
+    ],
+    "ipan-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Instrumental",
+            "aspect": "Basic",
+            "tense": "Future",
+            "function": "will use to [verb] (before t/d/s)",
+            "allomorphs": "Tagalog only; allomorph before t, d, s"
+        }
+    ],
+    "ipany-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Instrumental",
+            "aspect": "Basic",
+            "tense": "Future",
+            "function": "will use to [verb] (variant)",
+            "allomorphs": "Tagalog only; allomorph variant"
+        }
+    ],
+    "ipinam-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Instrumental",
+            "aspect": "Basic",
+            "tense": "Past",
+            "function": "was used to [verb] (before p/b)",
+            "rules": "was used to buy",
+            "allomorphs": "Tagalog only; past allomorph before p, b",
+            "example": {
+                "form_tag": "bili",
+                "gloss_tag": "ipinambili"
+            }
+        }
+    ],
+    "ipinan-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Instrumental",
+            "aspect": "Basic",
+            "tense": "Past",
+            "function": "was used to [verb] (before t/d/s)",
+            "allomorphs": "Tagalog only; past allomorph"
+        }
+    ],
+    "ipinany-": [
+        {
+            "type": "Inflectional",
+            "language": "Tagalog",
+            "focus": "Instrumental",
+            "aspect": "Basic",
+            "tense": "Past",
+            "function": "was used to [verb] (variant)",
+            "allomorphs": "Tagalog only; past allomorph variant"
+        }
+    ],
+    "pa-": [
+        {
+            "type": "Derivational",
+            "language": "Both",
+            "function": "make/have (someone) [verb]",
+            "rules": "Causative; combines with voice affixes",
+            "example": {
+                "root_ceb": "lútù",
+                "form_ceb": "palútù",
+                "gloss_ceb": "have (someone) cook",
+                "root_tag": "kain",
+                "form_tag": "pakain",
+                "gloss_tag": "feed/make eat"
+            }
+        }
+    ],
+    "magpa-": [
+        {
+            "type": "Derivational",
+            "language": "Tagalog",
+            "focus": "Actor",
+            "function": "have (someone) [verb]",
+            "rules": "have (someone) make",
+            "allomorphs": "Tagalog only; actor focus causative",
+            "example": {
+                "form_tag": "gawa",
+                "gloss_tag": "magpagawa"
+            }
+        }
+    ],
+    "ipa-": [
+        {
+            "type": "Derivational",
+            "language": "Tagalog",
+            "focus": "Benefactive",
+            "function": "have [verb]-ed for",
+            "rules": "have cooked for",
+            "allomorphs": "Tagalog only; benefactive focus causative",
+            "example": {
+                "form_tag": "luto",
+                "gloss_tag": "ipaluto"
+            }
+        }
+    ],
+    "pam-": [
+        {
+            "type": "Derivational",
+            "language": "Both",
+            "function": "instrument for [verb]-ing (before p/b)",
+            "allomorphs": "Allomorph before p, b"
+        }
+    ],
+    "pan-": [
+        {
+            "type": "Derivational",
+            "language": "Both",
+            "function": "instrument for [verb]-ing (before t/d/s)",
+            "rules": "Allomorph before t, d, s",
+            "allomorphs": "Part of pang- system",
+            "example": {
+                "root_ceb": "sulat",
+                "form_ceb": "panulat",
+                "gloss_ceb": "writing instrument"
+            }
+        }
+    ],
+    "pany-": [
+        {
+            "type": "Derivational",
+            "language": "Tagalog",
+            "function": "instrument for [verb]-ing (variant)",
+            "allomorphs": "Tagalog only; allomorph variant"
+        }
+    ],
+    "pang-": [
+        {
+            "type": "Derivational",
+            "language": "Both",
+            "function": "instrument for [verb]-ing (before k/h/vowels)",
+            "rules": "instrument for disorder",
+            "allomorphs": "Allomorph before k, h, vowels",
+            "example": {
+                "form_tag": "gulo",
+                "gloss_tag": "panggulo"
+            }
+        }
+    ],
+    "makig-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb] together with (someone)",
+            "rules": "Cebuano only; social action; future form",
+            "allomorphs": "Part of pakig-/makig- system",
+            "example": {
+                "root_ceb": "inúm",
+                "form_ceb": "makiginúm",
+                "gloss_ceb": "drink together with"
+            }
+        }
+    ],
+    "nakig-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb]-ed together with (someone)",
+            "rules": "Cebuano only; social action; past form",
+            "allomorphs": "Part of pakig-/makig- system",
+            "example": {
+                "root_ceb": "inúm",
+                "form_ceb": "nakiginúm",
+                "gloss_ceb": "drank together with"
+            }
+        }
+    ],
+    "maki-": [
+        {
+            "type": "Derivational",
+            "language": "Tagalog",
+            "function": "[verb] with (others)",
+            "rules": "play with others",
+            "allomorphs": "Tagalog only; social actor",
+            "example": {
+                "form_tag": "laro",
+                "gloss_tag": "makilaro"
+            }
+        }
+    ],
+    "makipag-": [
+        {
+            "type": "Derivational",
+            "language": "Tagalog",
+            "function": "engage in [verb] with",
+            "rules": "converse with",
+            "allomorphs": "Tagalog only; social reciprocal",
+            "example": {
+                "form_tag": "usap",
+                "gloss_tag": "makipag-usap"
+            }
+        }
+    ],
+    "magka-": [
+        {
+            "type": "Derivational",
+            "language": "Both",
+            "function": "[verb] each other/mutually",
+            "rules": "Mutual/reciprocal action",
+            "example": {
+                "root_ceb": "sábut",
+                "form_ceb": "magkasábut",
+                "gloss_ceb": "will understand each other",
+                "root_tag": "sunod",
+                "form_tag": "magkasunod",
+                "gloss_tag": "will follow one another"
+            }
+        }
+    ],
+    "manggi-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb] together (collective future)",
+            "rules": "Cebuano only; collective social future",
+            "allomorphs": "Part of panggi-/manggi- system",
+            "example": {
+                "root_ceb": "káun",
+                "form_ceb": "manggikáun",
+                "gloss_ceb": "will eat together"
+            }
+        }
+    ],
+    "nanggi-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb]-ed together (collective past)",
+            "rules": "Cebuano only; collective social past",
+            "allomorphs": "Part of panggi-/manggi- system",
+            "example": {
+                "root_ceb": "káun",
+                "form_ceb": "nanggikáun",
+                "gloss_ceb": "ate together"
+            }
+        }
+    ],
+    "paki-": [
+        {
+            "type": "Derivational",
+            "language": "Both",
+            "function": "please [verb] (polite request)",
+            "rules": "Shared polite request marker",
+            "example": {
+                "root_ceb": "tabang",
+                "form_ceb": "pakitabang",
+                "gloss_ceb": "please help",
+                "root_tag": "kuha",
+                "form_tag": "pakikuha",
+                "gloss_tag": "please get"
+            }
+        }
+    ],
+    "hi-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "accidentally [verb]",
+            "rules": "Cebuano only; involuntary/accidental",
+            "example": {
+                "root_ceb": "kaun",
+                "form_ceb": "hikaun",
+                "gloss_ceb": "accidentally eat"
+            }
+        }
+    ],
+    "ha-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "accidentally [verb] (variant)",
+            "rules": "Cebuano only; variant of hi-",
+            "example": {
+                "root_ceb": "kà",
+                "form_ceb": "hakà",
+                "gloss_ceb": "accidentally step on"
+            }
+        }
+    ],
+    "him-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb] intensively (before p/b)",
+            "rules": "Cebuano only; allomorph before p, b",
+            "allomorphs": "Part of hiN- system",
+            "example": {
+                "root_ceb": "bisayà",
+                "form_ceb": "himbisayà",
+                "gloss_ceb": "speak only Cebuano"
+            }
+        }
+    ],
+    "hin-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb] intensively (before t/d/s)",
+            "allomorphs": "Cebuano only; allomorph before t, d, s"
+        }
+    ],
+    "hing-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb] intensively (before k/h/vowels)",
+            "allomorphs": "Cebuano only; allomorph before k, h, vowels"
+        }
+    ],
+    "napaka-": [
+        {
+            "type": "Derivational",
+            "language": "Tagalog",
+            "function": "very [adjective]",
+            "rules": "very beautiful",
+            "allomorphs": "Tagalog only; intensive adjectival",
+            "example": {
+                "form_tag": "ganda",
+                "gloss_tag": "napakaganda"
+            }
+        }
+    ],
+    "mani-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb] professionally (future variant)",
+            "rules": "Cebuano only; professional/habitual future",
+            "allomorphs": "Part of pani-/mani- system",
+            "example": {
+                "root_ceb": "múlung",
+                "form_ceb": "panimúlung",
+                "gloss_ceb": "go hunting"
+            }
+        }
+    ],
+    "nani-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "[verb]-ed professionally (past variant)",
+            "rules": "Cebuano only; professional/habitual past",
+            "allomorphs": "Part of pani-/mani- system",
+            "example": {
+                "root_ceb": "múlung",
+                "form_ceb": "nanimúlung",
+                "gloss_ceb": "went hunting"
+            }
+        }
+    ],
+    "manim-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "make a habit of [verb]-ing (future; before p/b)",
+            "rules": "Cebuano only; allomorph before p, b",
+            "allomorphs": "Part of paniN-/maniN- system",
+            "example": {
+                "root_ceb": "káun",
+                "form_ceb": "paningkáun",
+                "gloss_ceb": "make a habit of eating"
+            }
+        }
+    ],
+    "manin-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "make a habit of [verb]-ing (future; before t/d/s)",
+            "allomorphs": "Cebuano only; allomorph before t, d, s"
+        }
+    ],
+    "maning-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "make a habit of [verb]-ing (future; before k/h/vowels)",
+            "allomorphs": "Cebuano only; allomorph before k, h, vowels"
+        }
+    ],
+    "nanim-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "made a habit of [verb]-ing (past; before p/b)",
+            "allomorphs": "Cebuano only; past allomorph before p, b"
+        }
+    ],
+    "nanin-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "made a habit of [verb]-ing (past; before t/d/s)",
+            "allomorphs": "Cebuano only; past allomorph before t, d, s"
+        }
+    ],
+    "naning-": [
+        {
+            "type": "Derivational",
+            "language": "Cebuano",
+            "function": "made a habit of [verb]-ing (past; before k/h/vowels)",
+            "allomorphs": "Cebuano only; past allomorph before k, h, vowels"
+        }
+    ],
+    "pag-": [
+        {
+            "type": "Nominal",
+            "language": "Tagalog",
+            "function": "act of [verb]-ing; [verb]-ed thing",
+            "rules": "eating/food",
+            "allomorphs": "Tagalog only; action nominalization",
+            "example": {
+                "form_tag": "kain",
+                "gloss_tag": "pagkain"
+            }
+        }
+    ],
+    "pagka-": [
+        {
+            "type": "Nominal",
+            "language": "Tagalog",
+            "function": "state of being [noun]; abstract",
+            "rules": "humanity/being a person",
+            "allomorphs": "Tagalog only; abstract state",
+            "example": {
+                "form_tag": "tao",
+                "gloss_tag": "pagkatao"
+            }
+        }
+    ],
+    "taga-": [
+        {
+            "type": "Nominal",
+            "language": "Tagalog",
+            "function": "person from [place]; habitual doer",
+            "rules": "cook (person)",
+            "allomorphs": "Tagalog only; agent/origin noun",
+            "example": {
+                "form_tag": "luto",
+                "gloss_tag": "tagaluto"
+            }
+        }
+    ],
+    "mapag-": [
+        {
+            "type": "Adjectival",
+            "language": "Tagalog",
+            "function": "characterized by [verb]-ing",
+            "rules": "loving (characteristic)",
+            "allomorphs": "Tagalog only; characteristic adjective",
+            "example": {
+                "form_tag": "mahal",
+                "gloss_tag": "mapagmahal"
+            }
+        }
     ]
-  },
-  "mag-": {
-    "language": "Both",
-    "function": "actor_focus_contemplated",
-    "compatible_pos": [
-      "verb",
-      "noun"
-    ]
-  },
-  "pag-": {
-    "language": "Both",
-    "function": "nominalization",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "gi-": {
-    "language": "Bisaya",
-    "function": "object_focus_completed",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "um-": {
-    "language": "Tagalog",
-    "function": "actor_focus",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "ma-": {
-    "language": "Both",
-    "function": "ability_state",
-    "compatible_pos": [
-      "verb",
-      "adjective"
-    ]
-  },
-  "na-": {
-    "language": "Both",
-    "function": "completed_state",
-    "compatible_pos": [
-      "verb",
-      "adjective"
-    ]
-  },
-  "ka-": {
-    "language": "Both",
-    "function": "associative_nominalization",
-    "compatible_pos": [
-      "noun",
-      "adjective",
-      "verb"
-    ]
-  },
-  "ipa-": {
-    "language": "Bisaya",
-    "function": "causative_object_focus",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "mang-": {
-    "language": "Both",
-    "function": "distributive_actor_focus",
-    "compatible_pos": [
-      "verb",
-      "noun"
-    ]
-  },
-  "pang-": {
-    "language": "Both",
-    "function": "instrumental",
-    "compatible_pos": [
-      "noun",
-      "verb"
-    ]
-  },
-  "maka-": {
-    "language": "Both",
-    "function": "ability",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "naka-": {
-    "language": "Both",
-    "function": "ability_completed",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "hing-": {
-    "language": "Bisaya",
-    "function": "frequentative",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "mo-": {
-    "language": "Bisaya",
-    "function": "actor_focus_future",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "mi-": {
-    "language": "Bisaya",
-    "function": "actor_focus_past",
-    "compatible_pos": [
-      "verb"
-    ]
-  },
-  "ni-": {
-    "language": "Bisaya",
-    "function": "actor_focus_past",
-    "compatible_pos": [
-      "verb"
-    ]
-  }
 }

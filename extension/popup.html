@@ -31,6 +31,13 @@
                     </svg>
                     Capture Screenshot
                 </button>
+                <button id="pasteTextBtn" class="btn-secondary" style="margin-top: 0.5rem; width: 100%;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                    </svg>
+                    Paste Text
+                </button>
                 <div class="settings">
                     <label class="checkbox">
                         <input type="checkbox" id="autoAnalyze" checked>
@@ -53,7 +60,8 @@
                 <h3>Extracted Text</h3>
                 <textarea id="extractedText" placeholder="Extracted text will appear here..."></textarea>
                 <div class="actions">
-                    <button id="editBtn" class="btn-secondary">Edit</button>
+                    <button id="editBtn" class="btn-secondary" style="display: none;">Edit</button>
+                    <button id="pasteInEditBtn" class="btn-secondary">Paste</button>
                     <button id="analyzeBtn" class="btn-primary">Analyze</button>
                 </div>
             </div>

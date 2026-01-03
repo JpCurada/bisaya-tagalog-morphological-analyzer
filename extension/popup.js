@@ -20,7 +20,9 @@ const elements = {
     viewDetailsBtn: document.getElementById('viewDetailsBtn'),
     autoAnalyze: document.getElementById('autoAnalyze'),
     extractedTextArea: document.getElementById('extractedText'),
-    statusText: document.getElementById('statusText')
+    statusText: document.getElementById('statusText'),
+    pasteTextBtn: document.getElementById('pasteTextBtn'),
+    pasteInEditBtn: document.getElementById('pasteInEditBtn')
 };
 
 // Initialize
@@ -31,7 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.editBtn.addEventListener('click', () => setState('ocr'));
     elements.backBtn.addEventListener('click', () => setState('initial'));
     elements.newCaptureBtn.addEventListener('click', () => setState('initial'));
+    elements.newCaptureBtn.addEventListener('click', () => setState('initial'));
     elements.viewDetailsBtn.addEventListener('click', openFullResults);
+
+    // Paste Handlers
+    elements.pasteTextBtn.addEventListener('click', handlePaste);
+    elements.pasteInEditBtn.addEventListener('click', handlePaste);
 
     // Load settings
     loadSettings();
@@ -75,6 +82,10 @@ async function restoreState() {
                 elements.extractedTextArea.value = extractedText;
                 setState('ocr');
             } else if (savedState === 'results' && analysisResults) {
+                // Ensure text is also restored if available
+                if (extractedText) {
+                    elements.extractedTextArea.value = extractedText;
+                }
                 displayResults(analysisResults);
             }
         } else {
@@ -197,6 +208,13 @@ async function handleScreenshotCapture(imageDataUrl) {
         // Perform OCR with status callback
         const text = await performOCR(imageDataUrl, updateStatus);
 
+        if (!text || text.trim().length === 0) {
+            updateStatus('OCR result was empty.');
+            // Only auto-analyze if we actually got text
+            setState('ocr');
+            return;
+        }
+
         extractedText = text;
         elements.extractedTextArea.value = extractedText;
 
@@ -289,56 +307,120 @@ async function analyzeText() {
 // Display Results
 function displayResults(data) {
     // Update stats
-    document.getElementById('statWords').textContent = data.stats.total_words;
-    document.getElementById('statSwitches').textContent = data.stats.switch_count;
+    if (data.stats) {
+        document.getElementById('statWords').textContent = data.stats.total_words || 0;
+        document.getElementById('statSwitches').textContent = data.stats.switch_count || 0;
 
-    const validPerc = data.stats.total_words > 0
-        ? Math.round((data.stats.valid_words / data.stats.total_words) * 100)
-        : 0;
-    document.getElementById('statValid').textContent = validPerc + '%';
+        const validPerc = data.stats.total_words > 0
+            ? Math.round((data.stats.valid_words / data.stats.total_words) * 100)
+            : 0;
+        document.getElementById('statValid').textContent = validPerc + '%';
+    }
 
     // Display language flow with hover tooltips
     const flowContainer = document.getElementById('flowContainer');
     flowContainer.innerHTML = '';
 
-    data.results.forEach(res => {
-        const item = document.createElement('div');
-        item.className = `flow-item ${res.language.toLowerCase()}`;
-        item.textContent = res.root || res.word;
+    if (data.results && Array.isArray(data.results)) {
+        data.results.forEach(res => {
+            const item = document.createElement('div');
+            // Use language for class, default to unknown
+            const langClass = (res.language || 'unknown').toLowerCase();
+            item.className = `flow-item ${langClass}`;
 
-        // Create tooltip content
-        const tooltipContent = createTooltipContent(res);
-        item.setAttribute('data-tooltip', tooltipContent);
+            // Display: Original word (User Request: Complete words must be shown)
+            item.textContent = res.original_token || res.word;
 
-        // Add hover event listeners for tooltip
-        item.addEventListener('mouseenter', showTooltip);
-        item.addEventListener('mouseleave', hideTooltip);
+            // Create tooltip content
+            const tooltipContent = createTooltipContent(res);
+            item.setAttribute('data-tooltip', tooltipContent);
 
-        flowContainer.appendChild(item);
-    });
+            // Add hover event listeners for tooltip
+            item.addEventListener('mouseenter', showTooltip);
+            item.addEventListener('mouseleave', hideTooltip);
+
+            flowContainer.appendChild(item);
+        });
+    }
 
     setState('results');
 }
 
 // Create tooltip content for word
+// Create tooltip content for word
 function createTooltipContent(wordData) {
-    let content = `<div class="tooltip-word">${wordData.word}</div>`;
+    let content = `<div class="tooltip-header">
+        <span class="tooltip-word">${wordData.word}</span>
+        <span class="tooltip-lang-badge ${wordData.language ? wordData.language.toLowerCase() : 'unknown'}">${wordData.language || 'Unknown'}</span>
+    </div>`;
 
-    if (wordData.meaning) {
-        content += `<div class="tooltip-meaning">${wordData.meaning}</div>`;
+    // Root Info
+    if (wordData.root && wordData.root !== wordData.word) {
+        content += `<div class="tooltip-row">
+            <span class="tooltip-label">Root:</span>
+            <span class="tooltip-value highlight">${wordData.root}</span>
+        </div>`;
     }
 
+    // POS
     if (wordData.pos) {
-        content += `<div class="tooltip-pos">${wordData.pos}</div>`;
+        content += `<div class="tooltip-row">
+            <span class="tooltip-label">POS:</span>
+            <span class="tooltip-pos">${wordData.pos}</span>
+        </div>`;
     }
 
-    // Add morpheme breakdown if available
-    if (wordData.prefix || wordData.suffix) {
-        const parts = [];
-        if (wordData.prefix) parts.push(`${wordData.prefix}-`);
-        parts.push(wordData.root || wordData.word);
-        if (wordData.suffix) parts.push(`-${wordData.suffix}`);
-        content += `<div class="tooltip-morphemes">${parts.join('')}</div>`;
+    // Source Link
+    if (wordData.link) {
+        content += `<div class="tooltip-row">
+            <span class="tooltip-label">Source:</span>
+            <a href="${wordData.link}" target="_blank" class="tooltip-link">View Dictionary</a>
+        </div>`;
+    }
+
+    // Structure
+    if (wordData.structure) {
+        content += `<div class="tooltip-morphemes">${wordData.structure}</div>`;
+    }
+
+    // Definitions
+    if (wordData.definitions && wordData.definitions.length > 0) {
+        content += `<div class="tooltip-section">
+            <div class="tooltip-section-title">Definitions</div>
+            <ul class="tooltip-def-list">`;
+
+        wordData.definitions.forEach(def => {
+            const sourceInfo = def.source ? ` <span class="tooltip-def-source">(${def.source})</span>` : '';
+            content += `<li>${def.definition}${sourceInfo}</li>`;
+        });
+
+        content += `</ul></div>`;
+    }
+
+    // Affixes Logic
+    if (wordData.affix_functions && wordData.affix_functions.length > 0) {
+        content += `<div class="tooltip-section">
+            <div class="tooltip-section-title">Affix Breakdown</div>
+            <div class="tooltip-affix-list">`;
+
+        wordData.affix_functions.forEach(affix => {
+            // Determine type class for badge
+            let typeClass = 'other';
+            if (affix.type.includes('Prefix')) typeClass = 'prefix';
+            if (affix.type.includes('Suffix')) typeClass = 'suffix';
+            if (affix.type.includes('Infix')) typeClass = 'infix';
+            if (affix.type.includes('Circumfix')) typeClass = 'circumfix';
+
+            content += `<div class="tooltip-affix-item">
+                <div class="tooltip-affix-header">
+                    <span class="tooltip-affix-form">${affix.affix}</span>
+                    <span class="tooltip-affix-type ${typeClass}">${affix.type}</span>
+                </div>
+                <div class="tooltip-affix-func">${affix.function}</div>
+            </div>`;
+        });
+
+        content += `</div></div>`;
     }
 
     return content;
@@ -358,6 +440,7 @@ function showTooltip(event) {
     tooltip.innerHTML = tooltipHTML;
     tooltip.id = 'active-tooltip';
 
+    // Append to body to ensure it floats above all other content
     document.body.appendChild(tooltip);
 
     // Position tooltip
@@ -373,17 +456,29 @@ function showTooltip(event) {
         left = window.innerWidth - tooltipRect.width - 5;
     }
 
+    // Check top edge
     if (top < 5) {
         // Show below if not enough space above
         top = rect.bottom + 8;
         tooltip.classList.add('below');
     }
 
+    // Check bottom edge (if showing below puts it offscreen)
+    // or if showing above puts it offscreen?
+    // Actually, if it was moved below, check if it fits
+    if (top + tooltipRect.height > window.innerHeight) {
+        // If it doesn't fit below either, prefer above but pinned to top
+        if (rect.top - tooltipRect.height - 8 < 5) {
+            top = 5; // Pin to top
+        } else {
+            top = rect.top - tooltipRect.height - 8; // Revert to above
+        }
+    }
+
     tooltip.style.left = left + 'px';
     tooltip.style.top = top + 'px';
 
-    // Fade in
-    setTimeout(() => tooltip.classList.add('visible'), 10);
+
 }
 
 // Hide tooltip
@@ -402,6 +497,23 @@ function openFullResults() {
     });
 }
 
+// Handle Paste
+async function handlePaste() {
+    try {
+        const text = await navigator.clipboard.readText();
+        if (text) {
+            elements.extractedTextArea.value = text;
+            setState('ocr');
+        } else {
+            showError('Clipboard is empty');
+        }
+    } catch (err) {
+        // Fallback for Firefox or if permission denied
+        setState('ocr');
+        elements.extractedTextArea.focus();
+        // Maybe show a tooltip "Ctrl+V to paste"
+    }
+}
 // Utility Functions
 function updateStatus(message) {
     elements.statusText.textContent = message;

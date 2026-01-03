@@ -203,16 +203,20 @@
                 canvas.height = rect.height;
 
                 // Draw the cropped portion
+                const dpr = window.devicePixelRatio || 1;
+
+                // Chrome captures at actual device pixels, while coordinates are CSS pixels
+                // Thus we need to scale the source coordinates
                 ctx.drawImage(
                     img,
-                    rect.left,  // Source x
-                    rect.top,   // Source y  
-                    rect.width, // Source width
-                    rect.height, // Source height
-                    0,          // Dest x
-                    0,          // Dest y
-                    rect.width, // Dest width
-                    rect.height // Dest height
+                    rect.left * dpr,   // Source x
+                    rect.top * dpr,    // Source y  
+                    rect.width * dpr,  // Source width
+                    rect.height * dpr, // Source height
+                    0,                 // Dest x
+                    0,                 // Dest y
+                    rect.width,        // Dest width
+                    rect.height        // Dest height
                 );
 
                 // Convert to JPEG for smaller file size
