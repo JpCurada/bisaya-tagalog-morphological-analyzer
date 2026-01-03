@@ -131,7 +131,7 @@ typedef struct RootDictionary {
 // Global root dictionaries
 extern RootDictionary* g_bisaya_roots;
 extern RootDictionary* g_tagalog_roots;
-extern RootDictionary* g_shared_vocab;
+
 
 // Load root dictionaries from JSON files
 bool load_root_dictionaries(const char* data_dir);
@@ -139,18 +139,18 @@ bool load_root_dictionaries(const char* data_dir);
 // Load individual root dictionaries
 bool load_bisaya_roots_json(const char* filepath);
 bool load_tagalog_roots_json(const char* filepath);
-bool load_shared_vocab_json(const char* filepath);
+
 
 // Lookup functions for roots
 RootWord* lookup_bisaya_root(const char* word);
 RootWord* lookup_tagalog_root(const char* word);
-RootWord* lookup_shared_vocab(const char* word);
+
 RootWord* lookup_any_root(const char* word, const char* language);
 
 // Get root count
 unsigned int get_bisaya_root_count(void);
 unsigned int get_tagalog_root_count(void);
-unsigned int get_shared_vocab_count(void);
+
 
 // Cleanup root dictionaries
 void cleanup_root_dictionaries(void);

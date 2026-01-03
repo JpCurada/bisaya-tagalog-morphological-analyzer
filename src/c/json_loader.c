@@ -555,7 +555,6 @@ void print_affix_stats(void) {
 
 RootDictionary* g_bisaya_roots = NULL;
 RootDictionary* g_tagalog_roots = NULL;
-RootDictionary* g_shared_vocab = NULL;
 
 // Create a root dictionary
 static RootDictionary* root_dict_create(unsigned int size, const char* default_lang) {
@@ -702,53 +701,8 @@ static bool load_root_array_json(const char* filepath, RootDictionary* dict) {
     return true;
 }
 
-// Load shared vocab from object JSON (original format)
-static bool load_shared_vocab_object_json(const char* filepath, RootDictionary* dict) {
-    char* content = read_file_contents(filepath);
-    if (!content) return false;
-    
-    cJSON* json = cJSON_Parse(content);
-    free(content);
-    
-    if (!json) {
-        fprintf(stderr, "Error: Failed to parse JSON from %s\n", filepath);
-        return false;
-    }
-    
-    // Iterate through object keys
-    cJSON* child = json->child;
-    while (child) {
-        if (cJSON_IsObject(child) && child->string) {
-            RootWord* root = (RootWord*)calloc(1, sizeof(RootWord));
-            if (root) {
-                safe_strcpy(root->word, child->string, sizeof(root->word));
-                
-                cJSON* meaning = cJSON_GetObjectItem(child, "meaning");
-                if (meaning && cJSON_IsString(meaning)) {
-                    safe_strcpy(root->definition, meaning->valuestring, sizeof(root->definition));
-                }
-                
-                cJSON* pos = cJSON_GetObjectItem(child, "pos");
-                if (pos && cJSON_IsString(pos)) {
-                    safe_strcpy(root->pos, pos->valuestring, sizeof(root->pos));
-                }
-                
-                cJSON* origin = cJSON_GetObjectItem(child, "origin");
-                if (origin && cJSON_IsString(origin)) {
-                    safe_strcpy(root->language, origin->valuestring, sizeof(root->language));
-                } else {
-                    safe_strcpy(root->language, "Both", sizeof(root->language));
-                }
-                
-                root_dict_insert(dict, root);
-            }
-        }
-        child = child->next;
-    }
-    
-    cJSON_Delete(json);
-    return true;
-}
+
+
 
 // Public API for root loading
 
@@ -771,15 +725,6 @@ bool load_tagalog_roots_json(const char* filepath) {
     return load_root_array_json(filepath, g_tagalog_roots);
 }
 
-bool load_shared_vocab_json(const char* filepath) {
-    if (g_shared_vocab) return true;
-    
-    g_shared_vocab = root_dict_create(500, "Both");
-    if (!g_shared_vocab) return false;
-    
-    return load_shared_vocab_object_json(filepath, g_shared_vocab);
-}
-
 bool load_root_dictionaries(const char* data_dir) {
     char filepath[512];
     bool success = true;
@@ -796,12 +741,6 @@ bool load_root_dictionaries(const char* data_dir) {
         success = false;
     }
     
-    snprintf(filepath, sizeof(filepath), "%s/shared_vocab.json", data_dir);
-    if (!load_shared_vocab_json(filepath)) {
-        fprintf(stderr, "Warning: Failed to load shared vocabulary\n");
-        success = false;
-    }
-    
     return success;
 }
 
@@ -811,10 +750,6 @@ RootWord* lookup_bisaya_root(const char* word) {
 
 RootWord* lookup_tagalog_root(const char* word) {
     return root_dict_lookup(g_tagalog_roots, word);
-}
-
-RootWord* lookup_shared_vocab(const char* word) {
-    return root_dict_lookup(g_shared_vocab, word);
 }
 
 RootWord* lookup_any_root(const char* word, const char* language) {
@@ -830,10 +765,6 @@ RootWord* lookup_any_root(const char* word, const char* language) {
         root = lookup_tagalog_root(word);
         if (root) return root;
     }
-    
-    // Try shared vocabulary
-    root = lookup_shared_vocab(word);
-    if (root) return root;
     
     // Last resort: try all dictionaries
     if (language) {
@@ -853,10 +784,6 @@ unsigned int get_bisaya_root_count(void) {
 
 unsigned int get_tagalog_root_count(void) {
     return g_tagalog_roots ? g_tagalog_roots->count : 0;
-}
-
-unsigned int get_shared_vocab_count(void) {
-    return g_shared_vocab ? g_shared_vocab->count : 0;
 }
 
 // Free a root dictionary
@@ -882,9 +809,6 @@ void cleanup_root_dictionaries(void) {
     
     free_root_dict(g_tagalog_roots);
     g_tagalog_roots = NULL;
-    
-    free_root_dict(g_shared_vocab);
-    g_shared_vocab = NULL;
 }
 
 void print_root_stats(void) {
@@ -896,10 +820,6 @@ void print_root_stats(void) {
     
     if (g_tagalog_roots) {
         printf("Tagalog roots: %u entries\n", g_tagalog_roots->count);
-    }
-    
-    if (g_shared_vocab) {
-        printf("Shared vocabulary: %u entries\n", g_shared_vocab->count);
     }
     
     printf("==================================\n");
