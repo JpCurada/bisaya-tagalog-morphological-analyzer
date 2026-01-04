@@ -80,8 +80,6 @@ body {
 .logo-icon {
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,7 +112,13 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #4e44b4 0%, #6b5ce7 25%, #8b5fcf 50%, #c44e88 75%, #e8705b 100%);
+    background: linear-gradient(135deg,
+    #5B4FC5 0%,
+    #2a246a 20%,
+    #2a246a 40%,
+    #2a246a 60%,
+    #2a246a 80%,
+    #2a246a 100%);
     position: relative;
     overflow: hidden;
 }
@@ -127,8 +131,12 @@ body {
     right: 0;
     bottom: 0;
     background:
-            radial-gradient(circle at 20% 50%, rgba(108, 92, 231, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(232, 112, 91, 0.3) 0%, transparent 50%);
+        /* Light blue blur at top left */
+            radial-gradient(circle at 15% 20%, rgba(100, 150, 255, 0.25) 0%, transparent 40%),
+                /* Orange blur at bottom left */
+            radial-gradient(circle at 10% 85%, rgba(234, 119, 64, 0.2) 0%, transparent 45%),
+                /* Strong orange blur at right side, positioned higher */
+            radial-gradient(circle at 80% 80%, rgba(232, 116, 65, 1) 0%, rgba(234, 119, 64, 0.3) 20%, transparent 40%);
     pointer-events: none;
 }
 
@@ -214,6 +222,27 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     background: white;
+}
+
+/* Optional: Add animations if not already defined */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
 }
 
 /* Demo Container */
@@ -625,8 +654,8 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--bg-secondary);
-    border-top: 1px solid var(--border);
+    background: #393232;
+    /*border-top: 1px solid var(--border);*/
     padding: 3rem 2rem;
 }
 
@@ -636,6 +665,8 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #ffffff;
+    font-size: 1.2rem;
 }
 
 .footer-logo {
@@ -651,7 +682,7 @@ section {
 }
 
 .footer-tagline {
-    color: var(--text-secondary);
+    color: var(--text-tertiary);
     font-size: 0.875rem;
 }
 
