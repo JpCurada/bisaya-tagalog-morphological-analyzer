@@ -11,7 +11,6 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from src.python.bindings import MorphologicalAnalyzer
-from src.python.detector import detect_switches, get_stats
 import logging
 
 # Configure Logging
