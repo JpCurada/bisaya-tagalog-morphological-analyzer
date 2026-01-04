@@ -312,6 +312,10 @@ class MorphologicalAutomaton:
                     "type": a['type'],
                     "function": a['info']['definitions'][0].get('function', '') if a['info'] and a['info']['definitions'] else '',
                     "language": a['info']['definitions'][0].get('language', 'Unknown') if a['info'] and a['info']['definitions'] else 'Unknown',
+                    "etymology": a['info']['definitions'][0].get('etymology', '') if a['info'] and a['info']['definitions'] else '',
+                    "pronunciation": a['info']['definitions'][0].get('pronunciation', '') if a['info'] and a['info']['definitions'] else '',
+                    "syllabification": a['info']['definitions'][0].get('syllabification', '') if a['info'] and a['info']['definitions'] else '',
+                    "derived_terms": a['info']['definitions'][0].get('derived_terms', []) if a['info'] and a['info']['definitions'] else [],
                     "metadata": a['info']['definitions'][0] if a['info'] and a['info']['definitions'] else {}
                 }
                 for a in affixes
@@ -373,7 +377,7 @@ class MorphologicalAnalyzer:
     
     def __init__(self, project_root):
         self.project_root = project_root
-        self.data_dir = os.path.join(project_root, "data")
+        self.data_dir = os.path.join(project_root, "data_v2")
         self.automaton = None # Late init
         
         # Load all data files

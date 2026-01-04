@@ -110,7 +110,11 @@ def analyze_single_word(word):
 def get_data_stats():
     """Get statistics about loaded data"""
     ana = get_analyzer()
-    return jsonify(ana.get_stats())
+    stats = ana.get_stats()
+    # Add computed totals for frontend
+    stats['total_affixes'] = stats['prefixes'] + stats['suffixes'] + stats['infixes'] + stats['circumfixes']
+    stats['total_roots'] = stats['bisaya_roots'] + stats['tagalog_roots']
+    return jsonify(stats)
 
 @app.route('/api/affixes', methods=['GET'])
 def get_all_affixes():
@@ -133,6 +137,7 @@ def get_prefixes():
     for key, definitions in prefixes.items():
         result.append({
             "key": key,
+            "affix_type": "prefix",
             "definitions": definitions,
             "count": len(definitions)
         })
@@ -147,6 +152,7 @@ def get_suffixes():
     for key, definitions in suffixes.items():
         result.append({
             "key": key,
+            "affix_type": "suffix",
             "definitions": definitions,
             "count": len(definitions)
         })
@@ -161,6 +167,7 @@ def get_infixes():
     for key, definitions in infixes.items():
         result.append({
             "key": key,
+            "affix_type": "infix",
             "definitions": definitions,
             "count": len(definitions)
         })
@@ -175,6 +182,7 @@ def get_circumfixes():
     for key, definitions in circumfixes.items():
         result.append({
             "key": key,
+            "affix_type": "circumfix",
             "definitions": definitions,
             "count": len(definitions)
         })

@@ -107,7 +107,7 @@ function createAffixCard(affix, index) {
     const firstDef = affix.definitions[0] || {};
     const func = firstDef.function || 'No function defined';
     const lang = firstDef.language || 'Unknown';
-    const type = firstDef.type || '';
+    const affixType = affix.affix_type || 'affix';
 
     // Get language class
     let langClass = 'lang-both';
@@ -117,7 +117,7 @@ function createAffixCard(affix, index) {
     card.innerHTML = `
         <div class="affix-card-header">
             <span class="affix-key">${affix.key}</span>
-            ${type ? `<span class="affix-type-badge">${type}</span>` : ''}
+            <span class="affix-type-badge type-${affixType}">${affixType}</span>
         </div>
         <div class="affix-function">${truncate(func, 100)}</div>
         <div class="affix-meta">
@@ -275,67 +275,47 @@ function createRootCard(root, index) {
 function showAffixDetail(affix) {
     const modal = document.getElementById('detailModal');
     const modalBody = document.getElementById('modalBody');
+    const affixType = affix.affix_type || 'affix';
 
     let definitionsHtml = '';
     affix.definitions.forEach((def, idx) => {
-        const hasExample = def.example_root_ceb || def.example_root_tag;
+        const derivedTerms = def.derived_terms || [];
+        const hasDerivTerms = derivedTerms.length > 0;
 
         definitionsHtml += `
             <div class="definition-item">
                 <div class="def-row">
-                    <span class="def-label">Function</span>
-                    <span class="def-value">${def.function || 'Not specified'}</span>
-                </div>
-                <div class="def-row">
                     <span class="def-label">Language</span>
-                    <span class="def-value">${def.language || 'Both'}</span>
+                    <span class="def-value">${def.language || 'Unknown'}</span>
                 </div>
-                ${def.type ? `
+                ${def.etymology ? `
                 <div class="def-row">
-                    <span class="def-label">Type</span>
-                    <span class="def-value">${def.type}</span>
+                    <span class="def-label">Etymology</span>
+                    <span class="def-value">${def.etymology}</span>
                 </div>
                 ` : ''}
-                ${def.focus ? `
+                ${def.pronunciation ? `
                 <div class="def-row">
-                    <span class="def-label">Focus</span>
-                    <span class="def-value">${def.focus}</span>
+                    <span class="def-label">Pronunciation</span>
+                    <span class="def-value pronunciation">${def.pronunciation}</span>
                 </div>
                 ` : ''}
-                ${def.aspect ? `
+                ${def.syllabification ? `
                 <div class="def-row">
-                    <span class="def-label">Aspect</span>
-                    <span class="def-value">${def.aspect}</span>
+                    <span class="def-label">Syllabification</span>
+                    <span class="def-value">${def.syllabification}</span>
                 </div>
                 ` : ''}
-                ${def.tense ? `
                 <div class="def-row">
-                    <span class="def-label">Tense</span>
-                    <span class="def-value">${def.tense}</span>
+                    <span class="def-label">Function</span>
+                    <span class="def-value function-text">${def.function || 'Not specified'}</span>
                 </div>
-                ` : ''}
-                ${def.rules ? `
-                <div class="def-row">
-                    <span class="def-label">Rules</span>
-                    <span class="def-value">${def.rules}</span>
-                </div>
-                ` : ''}
-                ${hasExample ? `
-                <div class="example-box">
-                    <div class="example-label">Example</div>
-                    <div class="example-content">
-                        ${def.example_root_ceb ? `
-                            <span class="example-root">${def.example_root_ceb}</span>
-                            <span class="example-arrow">→</span>
-                            <span class="example-form">${def.example_form_ceb || ''}</span>
-                            ${def.example_gloss_ceb ? `<span class="example-gloss">(${def.example_gloss_ceb})</span>` : ''}
-                        ` : ''}
-                        ${def.example_root_tag && !def.example_root_ceb ? `
-                            <span class="example-root">${def.example_root_tag}</span>
-                            <span class="example-arrow">→</span>
-                            <span class="example-form">${def.example_form_tag || ''}</span>
-                            ${def.example_gloss_tag ? `<span class="example-gloss">(${def.example_gloss_tag})</span>` : ''}
-                        ` : ''}
+                ${hasDerivTerms ? `
+                <div class="def-row derived-terms-row">
+                    <span class="def-label">Derived Terms</span>
+                    <div class="derived-terms-list">
+                        ${derivedTerms.slice(0, 20).map(term => `<span class="derived-term">${term}</span>`).join('')}
+                        ${derivedTerms.length > 20 ? `<span class="derived-term more">+${derivedTerms.length - 20} more</span>` : ''}
                     </div>
                 </div>
                 ` : ''}
@@ -346,7 +326,10 @@ function showAffixDetail(affix) {
     modalBody.innerHTML = `
         <div class="modal-header">
             <h2 class="modal-title">${affix.key}</h2>
-            <p class="modal-subtitle">${affix.count} definition${affix.count > 1 ? 's' : ''}</p>
+            <div class="modal-subtitle-row">
+                <span class="affix-type-badge type-${affixType}">${affixType}</span>
+                <span>${affix.count} definition${affix.count > 1 ? 's' : ''}</span>
+            </div>
         </div>
         <div class="definition-list">
             ${definitionsHtml}

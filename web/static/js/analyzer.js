@@ -228,9 +228,13 @@ function createMorphCard(res, index) {
                         <div class="affix-fn">
                             <div class="affix-fn-header">
                                 <span class="affix-fn-key">${af.affix}</span>
+                                <span class="affix-type-badge type-${af.type}">${af.type}</span>
                                 <span class="def-lang-badge ${af.language ? af.language.toLowerCase() : 'unknown'}">${af.language || 'Unknown'}</span>
                             </div>
-                            <span class="affix-fn-val">${truncate(af.function, 60)}</span>
+                            ${af.etymology ? `<div class="affix-fn-meta"><span class="meta-label">Etymology:</span> ${truncate(af.etymology, 80)}</div>` : ''}
+                            ${af.pronunciation ? `<div class="affix-fn-meta"><span class="meta-label">Pronunciation:</span> <span class="pronunciation">${af.pronunciation}</span></div>` : ''}
+                            ${af.syllabification ? `<div class="affix-fn-meta"><span class="meta-label">Syllables:</span> ${af.syllabification}</div>` : ''}
+                            <div class="affix-fn-val">${truncate(af.function, 100)}</div>
                         </div>
                     `).join('')}
                 </div>
