@@ -5,7 +5,7 @@ Modern implementation using Finite Automaton and JSON-based data
 import os
 import json
 import collections
-from .loader import (
+from .utils import (
     load_bisaya_roots, 
     load_tagalog_roots,
     load_tagalog_roots,

@@ -1,7 +1,3 @@
-"""
-Bistag Morphological Analyzer API Server
-Modern Flask API with comprehensive endpoints for analysis and data browsing
-"""
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import os
@@ -11,6 +7,8 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from src.python.bindings import MorphologicalAnalyzer
+from src.python.utils import get_stats, detect_switches
+
 import logging
 
 # Configure Logging
@@ -43,10 +41,8 @@ def get_analyzer():
             raise e
     return analyzer
 
-# =====================================================
-# Page Routes
-# =====================================================
 
+# TO DO: remove these pag magdedeploy na
 @app.route('/')
 def landing():
     return render_template('landing.html')
@@ -59,10 +55,8 @@ def analyzer_page():
 def browse_page():
     return render_template('browse.html')
 
-# =====================================================
-# Analysis API
-# =====================================================
 
+# API endpoints
 @app.route('/api/analyze', methods=['POST'])
 def analyze_text():
     """Analyze text and return morphological breakdown"""
