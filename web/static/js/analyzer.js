@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
             analyzeText();
         }
     });
+
+    // Check for URL query param 'q'
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryText = urlParams.get('q');
+    if (queryText) {
+        document.getElementById('inputText').value = queryText;
+        // Small delay to ensure stats load first
+        setTimeout(() => analyzeText(), 500);
+    }
 });
 
 // =====================================================
@@ -217,7 +226,10 @@ function createMorphCard(res, index) {
                 <div class="affix-functions">
                     ${res.affix_functions.map(af => `
                         <div class="affix-fn">
-                            <span class="affix-fn-key">${af.affix}</span>
+                            <div class="affix-fn-header">
+                                <span class="affix-fn-key">${af.affix}</span>
+                                <span class="def-lang-badge ${af.language ? af.language.toLowerCase() : 'unknown'}">${af.language || 'Unknown'}</span>
+                            </div>
                             <span class="affix-fn-val">${truncate(af.function, 60)}</span>
                         </div>
                     `).join('')}

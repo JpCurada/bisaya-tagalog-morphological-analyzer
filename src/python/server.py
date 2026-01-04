@@ -12,6 +12,15 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from src.python.bindings import MorphologicalAnalyzer
 from src.python.detector import detect_switches, get_stats
+import logging
+
+# Configure Logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%H:%M:%S'
+)
+logger = logging.getLogger('API')
 
 app = Flask(__name__, 
             template_folder='../../web/templates',

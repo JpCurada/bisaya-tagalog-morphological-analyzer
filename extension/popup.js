@@ -493,7 +493,9 @@ function hideTooltip() {
 function openFullResults() {
     // Store results in storage
     chrome.storage.local.set({ lastAnalysis: analysisResults }, () => {
-        chrome.tabs.create({ url: 'http://localhost:8000/analyzer' });
+        const text = elements.extractedTextArea.value;
+        const query = text ? `?q=${encodeURIComponent(text)}` : '';
+        chrome.tabs.create({ url: `http://localhost:8000/analyzer${query}` });
     });
 }
 
