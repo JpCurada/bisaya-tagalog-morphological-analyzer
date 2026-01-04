@@ -16,13 +16,17 @@
 <nav class="nav">
     <div class="nav-content">
         <div class="logo">
-            <div class="logo-icon">💬</div>
+            <img src="{{ url_for('static', filename='icon128.svg') }}" alt="BisTag Logo" class="logo-icon">
             <span>BisTag</span>
         </div>
-        <a href="#" class="btn-primary">
+        <a href="/analyzer" class="btn-primary">
             Open Analyzer
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4L10 8L6 12"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round" />
             </svg>
         </a>
     </div>
@@ -50,7 +54,7 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#" class="btn-hero-primary">
+                <a href="/analyzer" class="btn-cta">
                     Start Analyzing
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M7 4L14 10L7 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -174,8 +178,70 @@
         </div>
     </section>
 
+<!-- Step by Step Process Section -->
+<section class="how-it-works">
+    <div class="how-it-works-content">
+        <h2 class="section-title">Analyze the Bisaya-Tagalog Morphology in 3 easy steps</h2>
+
+        <!-- Desktop Layout -->
+        <div class="steps-grid">
+            <!-- Left Column - Steps -->
+            <div class="steps-column">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <p class="step-text">Open the extension</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <p class="step-text">Capture the text you want to analyze</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <p class="step-text">Understand how each word is formed</p>
+                </div>
+            </div>
+
+            <!-- Right Column - Visual Demos -->
+            <div class="demos-column">
+                <div class="demo-image-wrapper">
+                    <img src="https://placehold.co/400x200/ff9da6/333333?text=Extension+Panel" alt="Extensions panel" class="demo-image">
+                </div>
+                <div class="demo-image-wrapper">
+                    <img src="https://placehold.co/400x200/ff9da6/333333?text=Bistag+Analyzer" alt="Bistag analyzer interface" class="demo-image">
+                </div>
+                <div class="demo-image-wrapper">
+                    <img src="https://placehold.co/400x200/ff9da6/333333?text=Word+Analysis" alt="Word analysis results" class="demo-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Layout -->
+        <div class="mobile-layout">
+            <div class="mobile-step">
+                <div class="step-number">1</div>
+                <p class="step-text">Open the extension</p>
+                <img src="https://placehold.co/300x150/2a2a2a/white?text=Extension+Panel" alt="Extensions panel" class="demo-image">
+            </div>
+
+            <div class="mobile-step">
+                <div class="step-number">2</div>
+                <p class="step-text">Capture the text you want to analyze</p>
+                <img src="https://placehold.co/300x200/ffffff/333333?text=Bistag+Analyzer" alt="Bistag analyzer interface" class="demo-image">
+            </div>
+
+            <div class="mobile-step">
+                <div class="step-number">3</div>
+                <p class="step-text">Understand how each word is formed</p>
+                <img src="https://placehold.co/300x200/ffffff/333333?text=Word+Analysis" alt="Word analysis results" class="demo-image">
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section class="under-the-hood">
         <div class="section-header">
             <h2 class="section-title">How It Works</h2>
         </div>
@@ -256,10 +322,7 @@
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M4 7h16M4 12h16M4 17h10" />
-                    </svg>
+                    <img src="{{ url_for('static', filename='icon128.svg') }}" alt="BisTag Logo" class="logo-icon">
                     <span class="logo-text">Bistag</span>
                 </div>
                 <p class="footer-tagline">
