@@ -610,14 +610,42 @@ section {
 
 /* CTA */
 .cta {
-    background: var(--text-primary);
+    background: linear-gradient(90deg,
+    #E98622 0%,
+    #e4682d 15%,
+    #B95E6E 30%,
+    #8B4E8C 50%,
+    #6B48A8 70%,
+    #5743B8 85%,
+    #4A3FB0 100%);
     color: white;
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background image with circles */
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('cta-pattern.png');
+    background-size: contain;
+    background-position: left center;
+    background-repeat: repeat;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .cta-content {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .cta-title {
@@ -629,7 +657,7 @@ section {
 .cta-description {
     font-size: 1.25rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.95;
 }
 
 .btn-cta {
@@ -638,7 +666,7 @@ section {
     gap: 0.625rem;
     padding: 1rem 2.5rem;
     background: white;
-    color: var(--text-primary);
+    color: #5743B8;
     text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
@@ -649,8 +677,10 @@ section {
 
 .btn-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.95);
 }
+
 
 /* Footer */
 .footer {
