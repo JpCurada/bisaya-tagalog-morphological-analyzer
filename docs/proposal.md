@@ -183,53 +183,64 @@ However, the system is limited to identifying morphological structures at the wo
 
 ### Automata Construction
 
-**Build an NFA simulation where:**
+**The system uses a 4-Component Morphotactic FSM:**
 
-*   **Logic**: Uses a Breadth-First Search (BFS) Queue to explore states.
-*   **States**: Each state captures `(CurrentSubstring, Stage, AccumulatedAffixes)`.
-*   **Transitions**: Stripping an affix creates a *new* state in the queue.
-*   **Ambiguity Handling**: If a word matches multiple prefixes (e.g., `ma-` and `mag-`), *two* new states are enqueued, ensuring both possibilities are explored.
-
-**Algorithmic Concept:**
-
-1.  **Start State**: `InputWord`
-2.  **Strip Prefixes**: Check all matching prefixes. For each match, create a state `(RemainingString, PrefixStripped)`.
-3.  **Strip Infixes**: Check for internal matches. Create states.
-4.  **Strip Suffixes**: Check for trailing matches. Create states.
-5.  **Root Check (Validation)**: At any point, check if `RemainingString` is in `BisayaDict` or `TagalogDict`.
-    *   If **Yes**: Mark as **Accepted Analysis**. Record path.
-    *   If **No**: Continue stripping or Discard if no moves left.
+1.  **PrefixFSM**: Licenses valid prefix sequences.
+2.  **InfixFSM**: Handles infix insertion points via ε-transitions.
+3.  **RootLexicon**: Validates stems against Bisaya and Tagalog dictionaries.
+4.  **SuffixCircumfixFSM**: Licenses suffix sequences and enforces circumfix constraints.
 
 **Formal NFA Definition:**
 
-NFA_Morph = (Q, Σ, Δ, q0, F)
+M = (Q, Σ, δ, q0, F)
 
-*   **Q**: Set of all possible parsing states (infinite/dynamic in practice, bounded by word length)
-*   **Σ**: Character alphabet + Affix IDs
-*   **Δ (Transition Relation)**: Maps (State, Affix) → {Set of Next States} (One-to-many relation)
-*   **q0**: Initial state (Unprocessed Word)
-*   **F**: Set of Accepting States (where `RemainingString` ∈ Lexicon)
+*   **Q (States)**: Encodes `(Region, LexiconState, Position)`. Regions are PREFIX, ROOT, SUFFIX.
+*   **Σ (Alphabet)**: Characters {a-z, -} plus internal ε-moves.
+*   **δ (Transitions)**: 
+    *   *Char Moves*: Consuming input characters within a region's trie.
+    *   *Epsilon Moves*: jumping between regions (e.g., `PREFIX_END` -> `ROOT_START`).
+*   **q0**: Initial state at `(REGION_PREFIX, State 0)`.
+*   **F**: Accepting configurations at `ROOT_END` or `SUFFIX_END`.
 
 ### Implementation
 
-**Use Python (Prototype) & C (Core Engine) for development:**
+**Python Finite-State Implementation:**
 
-*   **Python Wrapper**: Handles API requests, JSON serving, and basic rule-based analysis.
-*   **C Engine**: Implements the NFA/BFS logic for high-performance morphological parsing.
-*   **Dual-Dictionary Lookup**: Simultaneous verification against Bisaya and Tagalog dictionaries to detect code-switching at the word level.
+The system is implemented entirely in Python to ensure flexibility and ease of integration with web technologies.
 
-**Core Algorithm: BFS Morphological Parse**
+*   **MorphotacticFSM**: The core engine that coordinates the four components.
+*   **Lexicon Tries**: Efficient prefix/suffix/root lookups using trie structures.
+*   **Infix Handler**: Specialized logic for handling infix insertion via ε-transitions.
 
-Input: word (string)
-Output: List of {root, affixes[], language}
-1.  Initialize Queue `Q` with `StartState(word)`
-2.  While `Q` is not empty:
-    a.  `Current` ← Dequeue `Q`
-    b.  **Root Check**: If `Current.str` in Dictionary → Add to Results
-    c.  **Branch Prefix**: Find all `p` in `Prefixes` where `Current.str` starts with `p` → Enqueue `(Current.str - p)`
-    d.  **Branch Suffix**: Find all `s` in `Suffixes` where `Current.str` ends with `s` → Enqueue `(Current.str - s)`
-    e.  **Branch Infix**: Find all `i` in `Infixes` inside `Current.str` → Enqueue `(Current.str - i)`
-3.  Return collected Results
+**Core Algorithm: Pseudo-Code**
+
+```python
+def simulate(word):
+    queue = deque([InitialConfiguration])
+    while queue:
+        config = queue.popleft()
+        
+        # 1. Character Transitions (Move within Region)
+        next_state = transition(config.state, word[pos])
+        if next_state: enqueue(next_state)
+            
+        # 2. Epsilon Transitions (Switch Region)
+        # PREFIX -> ROOT 
+        if valid_prefix_end: 
+            enqueue(TransitionToRoot)
+            
+        # ROOT -> SUFFIX
+        if valid_root_end:
+            enqueue(TransitionToSuffix)
+            
+        # 3. Acceptance
+        if end_of_word and in_accept_state:
+            add_to_results(config)
+```
+
+**Output Format:**
+
+The system generates a **Finite-State Morphotactic Parse** string for each valid analysis, e.g., `mag[PFX] + sulat[ROOT]`.
 
 ### Testing and Evaluation
 
