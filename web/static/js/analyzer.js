@@ -8,8 +8,6 @@
 // =====================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadQuickStats();
-
     // Add keyboard shortcut
     document.getElementById('inputText').addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && e.ctrlKey) {
@@ -26,23 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => analyzeText(), 500);
     }
 });
-
-// =====================================================
-// Quick Stats Loading
-// =====================================================
-
-async function loadQuickStats() {
-    try {
-        const response = await fetch('/api/stats');
-        const stats = await response.json();
-
-        document.getElementById('qsPrefixes').textContent = stats.prefixes;
-        document.getElementById('qsSuffixes').textContent = stats.suffixes;
-        document.getElementById('qsRoots').textContent = formatNumber(stats.total_roots);
-    } catch (error) {
-        console.log('Stats loading skipped');
-    }
-}
 
 function formatNumber(num) {
     if (num >= 1000) {
