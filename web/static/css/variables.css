@@ -1,0 +1,151 @@
+/* ==============================================
+   CSS VARIABLES & DESIGN TOKENS - Glassmorphism
+   ============================================== */
+:root {
+    /* Colors - Modern Minimalist matching Landing */
+    --color-bg-primary: #f8f9fc;
+    --color-bg-secondary: rgba(255, 255, 255, 0.7);
+    --color-bg-tertiary: rgba(255, 255, 255, 0.5);
+    --color-bg-glass: rgba(255, 255, 255, 0.6);
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #5a5a7a;
+    --color-text-tertiary: #8a8aa0;
+    --color-accent: #6c5ce7;
+    --color-accent-light: #a29bfe;
+    --color-border: rgba(0, 0, 0, 0.06);
+    --color-border-glass: rgba(255, 255, 255, 0.4);
+    --color-success: #10b981;
+    --color-error: #ef4444;
+    --color-bisaya: #06b6d4;
+    --color-tagalog: #ec4899;
+    --color-shared: #f59e0b;
+
+    /* Glassmorphism Shadows */
+    --shadow-glass: 0 4px 30px rgba(0, 0, 0, 0.05);
+    --shadow-glass-hover: 0 8px 40px rgba(0, 0, 0, 0.08);
+    --shadow-neu-inset: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+    --shadow-neu-raised: 0 4px 15px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.12);
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+
+    /* Border Radius - Softer */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Typography */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Monaco', 'Menlo', monospace;
+
+    /* Transitions */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Gradient backgrounds matching landing */
+    --gradient-hero: linear-gradient(135deg, #5B4FC5 0%, #2a246a 50%, #2a246a 100%);
+    --gradient-warm: linear-gradient(135deg, #ffd89b 0%, #ffb88c 50%, #ffa07a 100%);
+}
+
+/* ==============================================
+   RESET & BASE STYLES
+   ============================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: linear-gradient(135deg, #f8f9fc 0%, #e8eaf6 100%);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ==============================================
+   UTILITY CLASSES
+   ============================================== */
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Fade In Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Spin Animation */
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite;
+}

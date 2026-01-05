@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistag Analyzer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <svg class="logo" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M4 7h16M4 12h16M4 17h10" />
+            </svg>
+            <h1>Bistag</h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Initial State -->
+            <div id="initialState" class="state">
+                <p class="description">Capture and analyze Bisaya-Tagalog text from any webpage</p>
+                <button id="captureBtn" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    Capture Screenshot
+                </button>
+                <button id="pasteTextBtn" class="btn-secondary" style="margin-top: 0.5rem; width: 100%;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                    </svg>
+                    Paste Text
+                </button>
+                <div class="settings">
+                    <label class="checkbox">
+                        <input type="checkbox" id="autoAnalyze" checked>
+                        <span>Auto-analyze after OCR</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Processing State -->
+            <div id="processingState" class="state hidden">
+                <div class="spinner"></div>
+                <p id="statusText">Processing...</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <!-- OCR Result State -->
+            <div id="ocrState" class="state hidden">
+                <h3>Extracted Text</h3>
+                <textarea id="extractedText" placeholder="Extracted text will appear here..."></textarea>
+                <div class="actions">
+                    <button id="editBtn" class="btn-secondary" style="display: none;">Edit</button>
+                    <button id="pasteInEditBtn" class="btn-secondary">Paste</button>
+                    <button id="analyzeBtn" class="btn-primary">Analyze</button>
+                </div>
+            </div>
+
+            <!-- Results State -->
+            <div id="resultsState" class="state hidden">
+                <div class="results-header">
+                    <h3>Analysis Results</h3>
+                    <button id="backBtn" class="btn-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 8H2M6 4L2 8l4 4" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-label">Words</span>
+                        <span class="stat-value" id="statWords">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Switches</span>
+                        <span class="stat-value" id="statSwitches">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Valid</span>
+                        <span class="stat-value" id="statValid">0%</span>
+                    </div>
+                </div>
+
+                <!-- Language Flow -->
+                <div class="flow-section">
+                    <h4>Language Flow</h4>
+                    <div id="flowContainer" class="flow-container"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="actions">
+                    <button id="viewDetailsBtn" class="btn-secondary">View Full Details</button>
+                    <button id="newCaptureBtn" class="btn-primary">New Capture</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <a href="#" id="settingsLink">Settings</a>
+            <span class="divider">•</span>
+            <a href="http://localhost:8000" target="_blank">Open Web App</a>
+        </div>
+    </div>
+
+
+    <script src="ocr-utils.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>
