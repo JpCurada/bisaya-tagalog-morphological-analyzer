@@ -217,19 +217,21 @@
 }
 
 .affix-card {
-    background: white;
-    border: 1px solid var(--color-border);
+    background: var(--color-bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border-glass);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
     cursor: pointer;
     transition: all var(--transition-base);
     animation: slideUp 0.4s ease backwards;
+    box-shadow: var(--shadow-glass);
 }
 
 .affix-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-accent);
+    box-shadow: var(--shadow-glass-hover), 0 0 30px rgba(108, 92, 231, 0.1);
 }
 
 .affix-card-header {
@@ -317,19 +319,21 @@
 }
 
 .root-card {
-    background: white;
-    border: 1px solid var(--color-border);
+    background: var(--color-bg-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border-glass);
     border-radius: var(--radius-lg);
     padding: var(--space-lg);
     cursor: pointer;
     transition: all var(--transition-base);
     animation: slideUp 0.4s ease backwards;
+    box-shadow: var(--shadow-glass);
 }
 
 .root-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-    border-color: var(--color-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glass-hover), 0 0 25px rgba(108, 92, 231, 0.08);
 }
 
 .root-word {
@@ -379,8 +383,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(26, 26, 46, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .modal-content {
@@ -389,10 +394,15 @@
     max-width: 600px;
     max-height: 80vh;
     overflow-y: auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: var(--space-xl);
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--color-border-glass);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15),
+        0 8px 25px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
     animation: modalIn 0.3s ease;
 }
 
@@ -456,9 +466,12 @@
 
 .definition-item {
     padding: var(--space-lg);
-    background: var(--color-bg-secondary);
+    background: var(--color-bg-glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: var(--radius-lg);
-    border-left: 4px solid var(--color-accent);
+    border: 1px solid var(--color-border-glass);
+    box-shadow: var(--shadow-glass);
 }
 
 .def-row {
@@ -525,6 +538,81 @@
     color: var(--color-text-secondary);
     font-style: italic;
     margin-left: var(--space-sm);
+}
+
+/* Affix Type Badge Colors */
+.affix-type-badge.type-prefix {
+    background: rgba(52, 152, 219, 0.15);
+    color: #3498db;
+}
+
+.affix-type-badge.type-suffix {
+    background: rgba(46, 204, 113, 0.15);
+    color: #27ae60;
+}
+
+.affix-type-badge.type-infix {
+    background: rgba(155, 89, 182, 0.15);
+    color: #9b59b6;
+}
+
+.affix-type-badge.type-circumfix {
+    background: rgba(241, 196, 15, 0.15);
+    color: #d4a31a;
+}
+
+/* Modal Subtitle Row */
+.modal-subtitle-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    color: var(--color-text-tertiary);
+    font-size: 0.875rem;
+}
+
+/* Function Text */
+.def-value.function-text {
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* Pronunciation */
+.def-value.pronunciation {
+    font-family: 'Fira Code', 'Monaco', monospace;
+}
+
+/* Derived Terms */
+.derived-terms-row {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.derived-terms-row .def-label {
+    margin-bottom: var(--space-sm);
+}
+
+.derived-terms-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    width: 100%;
+}
+
+.derived-term {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    font-family: 'Fira Code', 'Monaco', monospace;
+}
+
+.derived-term.more {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+    font-style: italic;
 }
 
 /* Responsive */

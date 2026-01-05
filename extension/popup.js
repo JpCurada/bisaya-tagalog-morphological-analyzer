@@ -347,7 +347,6 @@ function displayResults(data) {
 }
 
 // Create tooltip content for word
-// Create tooltip content for word
 function createTooltipContent(wordData) {
     let content = `<div class="tooltip-header">
         <span class="tooltip-word">${wordData.word}</span>
@@ -370,53 +369,49 @@ function createTooltipContent(wordData) {
         </div>`;
     }
 
-    // Source Link
-    if (wordData.link) {
-        content += `<div class="tooltip-row">
-            <span class="tooltip-label">Source:</span>
-            <a href="${wordData.link}" target="_blank" class="tooltip-link">View Dictionary</a>
-        </div>`;
-    }
-
     // Structure
     if (wordData.structure) {
         content += `<div class="tooltip-morphemes">${wordData.structure}</div>`;
     }
 
-    // Definitions
+    // Definitions with language badges and source links
     if (wordData.definitions && wordData.definitions.length > 0) {
         content += `<div class="tooltip-section">
             <div class="tooltip-section-title">Definitions</div>
-            <ul class="tooltip-def-list">`;
+            <div class="tooltip-def-entries">`;
 
         wordData.definitions.forEach(def => {
-            const sourceInfo = def.source ? ` <span class="tooltip-def-source">(${def.source})</span>` : '';
-            content += `<li>${def.definition}${sourceInfo}</li>`;
+            const langBadge = def.language ? `<span class="tooltip-lang-badge ${def.language.toLowerCase()}">${def.language}</span>` : '';
+            const posTag = def.pos ? `<span class="tooltip-def-pos">${def.pos}</span>` : '';
+            const sourceLink = def.source ? `<a href="${def.source}" target="_blank" class="tooltip-link">↗</a>` : '';
+
+            content += `<div class="tooltip-def-entry">
+                <div class="tooltip-def-header">
+                    ${langBadge}
+                    ${posTag}
+                    ${sourceLink}
+                </div>
+                <div class="tooltip-def-text">${def.definition || 'No definition'}</div>
+            </div>`;
         });
 
-        content += `</ul></div>`;
+        content += `</div></div>`;
     }
 
-    // Affixes Logic
+    // Affixes - simplified to just show type and language
     if (wordData.affix_functions && wordData.affix_functions.length > 0) {
         content += `<div class="tooltip-section">
-            <div class="tooltip-section-title">Affix Breakdown</div>
+            <div class="tooltip-section-title">Affixes</div>
             <div class="tooltip-affix-list">`;
 
         wordData.affix_functions.forEach(affix => {
-            // Determine type class for badge
-            let typeClass = 'other';
-            if (affix.type.includes('Prefix')) typeClass = 'prefix';
-            if (affix.type.includes('Suffix')) typeClass = 'suffix';
-            if (affix.type.includes('Infix')) typeClass = 'infix';
-            if (affix.type.includes('Circumfix')) typeClass = 'circumfix';
+            const typeClass = affix.type || 'other';
+            const lang = affix.language || 'Unknown';
 
-            content += `<div class="tooltip-affix-item">
-                <div class="tooltip-affix-header">
-                    <span class="tooltip-affix-form">${affix.affix}</span>
-                    <span class="tooltip-affix-type ${typeClass}">${affix.type}</span>
-                </div>
-                <div class="tooltip-affix-func">${affix.function}</div>
+            content += `<div class="tooltip-affix-item compact">
+                <span class="tooltip-affix-form">${affix.affix}</span>
+                <span class="tooltip-affix-type ${typeClass}">${affix.type}</span>
+                <span class="tooltip-lang-badge ${lang.toLowerCase()}">${lang}</span>
             </div>`;
         });
 
@@ -424,6 +419,13 @@ function createTooltipContent(wordData) {
     }
 
     return content;
+}
+
+// Helper to truncate text
+function truncateText(text, maxLen) {
+    if (!text) return '';
+    if (text.length <= maxLen) return text;
+    return text.substring(0, maxLen) + '...';
 }
 
 // Show tooltip
@@ -493,7 +495,9 @@ function hideTooltip() {
 function openFullResults() {
     // Store results in storage
     chrome.storage.local.set({ lastAnalysis: analysisResults }, () => {
-        chrome.tabs.create({ url: 'http://localhost:8000/analyzer' });
+        const text = elements.extractedTextArea.value;
+        const query = text ? `?q=${encodeURIComponent(text)}` : '';
+        chrome.tabs.create({ url: `http://localhost:8000/analyzer${query}` });
     });
 }
 

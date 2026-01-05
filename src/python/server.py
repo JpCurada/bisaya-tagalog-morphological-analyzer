@@ -1,7 +1,3 @@
-"""
-Bistag Morphological Analyzer API Server
-Modern Flask API with comprehensive endpoints for analysis and data browsing
-"""
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import os
@@ -11,7 +7,17 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from src.python.bindings import MorphologicalAnalyzer
-from src.python.detector import detect_switches, get_stats
+from src.python.utils import get_stats, detect_switches
+
+import logging
+
+# Configure Logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%H:%M:%S'
+)
+logger = logging.getLogger('API')
 
 app = Flask(__name__, 
             template_folder='../../web/templates',
@@ -35,10 +41,8 @@ def get_analyzer():
             raise e
     return analyzer
 
-# =====================================================
-# Page Routes
-# =====================================================
 
+# TO DO: remove these pag magdedeploy na
 @app.route('/')
 def landing():
     return render_template('landing.html')
@@ -51,10 +55,8 @@ def analyzer_page():
 def browse_page():
     return render_template('browse.html')
 
-# =====================================================
-# Analysis API
-# =====================================================
 
+# API endpoints
 @app.route('/api/analyze', methods=['POST'])
 def analyze_text():
     """Analyze text and return morphological breakdown"""
@@ -101,7 +103,11 @@ def analyze_single_word(word):
 def get_data_stats():
     """Get statistics about loaded data"""
     ana = get_analyzer()
-    return jsonify(ana.get_stats())
+    stats = ana.get_stats()
+    # Add computed totals for frontend
+    stats['total_affixes'] = stats['prefixes'] + stats['suffixes'] + stats['infixes'] + stats['circumfixes']
+    stats['total_roots'] = stats['bisaya_roots'] + stats['tagalog_roots']
+    return jsonify(stats)
 
 @app.route('/api/affixes', methods=['GET'])
 def get_all_affixes():
@@ -124,6 +130,7 @@ def get_prefixes():
     for key, definitions in prefixes.items():
         result.append({
             "key": key,
+            "affix_type": "prefix",
             "definitions": definitions,
             "count": len(definitions)
         })
@@ -138,6 +145,7 @@ def get_suffixes():
     for key, definitions in suffixes.items():
         result.append({
             "key": key,
+            "affix_type": "suffix",
             "definitions": definitions,
             "count": len(definitions)
         })
@@ -152,6 +160,7 @@ def get_infixes():
     for key, definitions in infixes.items():
         result.append({
             "key": key,
+            "affix_type": "infix",
             "definitions": definitions,
             "count": len(definitions)
         })
@@ -166,6 +175,7 @@ def get_circumfixes():
     for key, definitions in circumfixes.items():
         result.append({
             "key": key,
+            "affix_type": "circumfix",
             "definitions": definitions,
             "count": len(definitions)
         })

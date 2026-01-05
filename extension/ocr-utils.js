@@ -1,6 +1,6 @@
 // OCR Configuration
 const OCR_CONFIG = {
-    apiKey: 'API_KEY', // Your personal OCR.space API key
+    apiKey: 'K89371255788957', // Your personal OCR.space API key
     apiUrl: 'https://api.ocr.space/parse/image',
     timeout: 30000,
     maxRetries: 2,
