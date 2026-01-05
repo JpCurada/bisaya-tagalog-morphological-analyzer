@@ -20,26 +20,20 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="nav" role="navigation">
+    <!--Navigation-->
+    <nav class="nav">
         <div class="nav-content">
             <a href="/" class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <path d="M4 7h16M4 12h16M4 17h10" />
-                </svg>
-                <span class="logo-text">Bistag</span>
+                <img src="{{ url_for('static', filename='icon128.svg') }}" alt="BisTag Logo" class="logo-icon">
+                <span>BisTag</span>
             </a>
-            <div class="nav-links">
-                <a href="/browse" class="btn btn-secondary btn-sm">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                    </svg>
-                    Browse Data
-                </a>
-                <a href="/" class="btn btn-ghost btn-sm">Home</a>
-            </div>
+            <a href="/browse" class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+                Browse Data
+            </a>
         </div>
     </nav>
 
@@ -175,16 +169,17 @@
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M4 7h16M4 12h16M4 17h10" />
-                    </svg>
+                    <img src="{{ url_for('static', filename='icon128.svg') }}" alt="BisTag Logo" class="logo-icon">
                     <span class="logo-text">Bistag</span>
                 </div>
-                <p class="footer-tagline">Bisaya-Tagalog Morphological Analyzer</p>
+                <p class="footer-tagline">
+                    Bisaya-Tagalog Code-Switching Morphological Analyzer
+                </p>
             </div>
             <div class="footer-right">
-                <p class="footer-credit">Built with FSA & DFA • Philippine Languages</p>
+                <p class="footer-credit">
+                    Built with DFA & Finite Automata • Group 1
+                </p>
             </div>
         </div>
     </footer>

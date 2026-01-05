@@ -19,28 +19,25 @@
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="/" class="logo">
-                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <path d="M4 7h16M4 12h16M4 17h10" />
-                </svg>
-                <span class="logo-text">Bistag</span>
-            </a>
-            <div class="nav-links">
-                <a href="/analyzer" class="btn btn-accent btn-sm">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="M21 21l-4.35-4.35" />
-                    </svg>
-                    Analyzer
-                </a>
-                <a href="/" class="btn btn-ghost btn-sm">Home</a>
-            </div>
-        </div>
-    </nav>
+<!--Navigation-->
+<nav class="nav">
+    <div class="nav-content">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='icon128.svg') }}" alt="BisTag Logo" class="logo-icon">
+            <span>BisTag</span>
+        </a>
+        <a href="/analyzer" class="btn-primary">
+            Back to Analyzer
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4L10 8L6 12"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round" />
+            </svg>
+        </a>
+    </div>
+</nav>
 
     <!-- Main Content -->
     <main class="browse-container">
@@ -172,21 +169,25 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M4 7h16M4 12h16M4 17h10" />
-                    </svg>
-                    <span class="logo-text">Bistag</span>
-                </div>
-                <p class="footer-tagline">Philippine Language Morphology</p>
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='icon128.svg') }}" alt="BisTag Logo" class="logo-icon">
+                <span class="logo-text">Bistag</span>
             </div>
+            <p class="footer-tagline">
+                Bisaya-Tagalog Code-Switching Morphological Analyzer
+            </p>
         </div>
-    </footer>
+        <div class="footer-right">
+            <p class="footer-credit">
+                Built with DFA & Finite Automata • Group 1
+            </p>
+        </div>
+    </div>
+</footer>
 
     <!-- Toast Container -->
     <div id="toast-container"></div>
